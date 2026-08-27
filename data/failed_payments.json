@@ -8,7 +8,9 @@
     "decline_reason": "risk_block",
     "failed_at": "2026-08-24T18:19:11.740421",
     "attempts": 0,
-    "status": "pending"
+    "status": "sms_only",
+    "action": "sms_only",
+    "reason": "Payment amount is below \u20b9300, so no call is required."
   },
   {
     "payment_id": "sim_0002",
@@ -19,7 +21,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-24T22:19:11.740501",
     "attempts": 0,
-    "status": "pending"
+    "status": "sms_only",
+    "action": "sms_only",
+    "reason": "Payment amount is below \u20b9300, so no call is required."
   },
   {
     "payment_id": "sim_0003",
@@ -30,7 +34,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-25T09:19:11.740523",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0004",
@@ -41,7 +47,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-25T10:19:11.740537",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0005",
@@ -52,7 +60,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-25T11:19:11.740547",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0006",
@@ -63,7 +73,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-23T02:19:11.740558",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0007",
@@ -74,7 +86,9 @@
     "decline_reason": "risk_block",
     "failed_at": "2026-08-24T03:19:11.740568",
     "attempts": 0,
-    "status": "pending"
+    "status": "escalate_human",
+    "action": "escalate_human",
+    "reason": "Risk blocks must not be automatically retried; escalate to a human for safety and compliance."
   },
   {
     "payment_id": "sim_0008",
@@ -85,7 +99,9 @@
     "decline_reason": "risk_block",
     "failed_at": "2026-08-25T06:19:11.740576",
     "attempts": 0,
-    "status": "pending"
+    "status": "escalate_human",
+    "action": "escalate_human",
+    "reason": "Risk blocks must not be automatically retried; escalate to a human for safety and compliance."
   },
   {
     "payment_id": "sim_0009",
@@ -96,7 +112,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-25T10:19:11.740585",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0010",
@@ -107,7 +125,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-24T18:19:11.740595",
     "attempts": 0,
-    "status": "pending"
+    "status": "sms_only",
+    "action": "sms_only",
+    "reason": "Payment amount is below \u20b9300, so no call is required."
   },
   {
     "payment_id": "sim_0011",
@@ -118,7 +138,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-23T22:19:11.740604",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0012",
@@ -129,7 +151,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-24T14:19:11.740617",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0013",
@@ -140,7 +164,9 @@
     "decline_reason": "risk_block",
     "failed_at": "2026-08-23T14:19:11.740626",
     "attempts": 0,
-    "status": "pending"
+    "status": "escalate_human",
+    "action": "escalate_human",
+    "reason": "Risk blocks must not be automatically retried; escalate to a human for safety and compliance."
   },
   {
     "payment_id": "sim_0014",
@@ -151,7 +177,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-23T04:19:11.740635",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0015",
@@ -162,7 +190,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-24T00:19:11.740646",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0016",
@@ -173,7 +203,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-23T17:19:11.740655",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0017",
@@ -184,7 +216,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-24T00:19:11.740664",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0018",
@@ -195,7 +229,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-24T20:19:11.740673",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0019",
@@ -206,7 +242,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-23T03:19:11.740681",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0020",
@@ -217,7 +255,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-24T14:19:11.740690",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0021",
@@ -228,7 +268,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-23T06:19:11.740699",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0022",
@@ -239,7 +281,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-23T00:19:11.740707",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0023",
@@ -250,7 +294,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-25T16:19:11.740717",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0024",
@@ -261,7 +307,9 @@
     "decline_reason": "risk_block",
     "failed_at": "2026-08-25T05:19:11.740725",
     "attempts": 0,
-    "status": "pending"
+    "status": "escalate_human",
+    "action": "escalate_human",
+    "reason": "Risk blocks must not be automatically retried; escalate to a human for safety and compliance."
   },
   {
     "payment_id": "sim_0025",
@@ -272,7 +320,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-23T10:19:11.740734",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0026",
@@ -283,7 +333,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-24T16:19:11.740743",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0027",
@@ -294,7 +346,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-23T20:19:11.740752",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0028",
@@ -305,7 +359,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-24T23:19:11.740764",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0029",
@@ -316,7 +372,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-23T08:19:11.740773",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0030",
@@ -327,7 +385,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-25T20:19:11.740782",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0031",
@@ -338,7 +398,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-23T02:19:11.740792",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0032",
@@ -349,7 +411,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-23T17:19:11.740801",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0033",
@@ -360,7 +424,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-23T02:19:11.740809",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0034",
@@ -371,7 +437,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-25T12:19:11.740818",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0035",
@@ -382,7 +450,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-24T09:19:11.740829",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0036",
@@ -393,7 +463,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-24T01:19:11.740838",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0037",
@@ -404,7 +476,9 @@
     "decline_reason": "risk_block",
     "failed_at": "2026-08-25T08:19:11.740846",
     "attempts": 0,
-    "status": "pending"
+    "status": "escalate_human",
+    "action": "escalate_human",
+    "reason": "Risk blocks must not be automatically retried; escalate to a human for safety and compliance."
   },
   {
     "payment_id": "sim_0038",
@@ -415,7 +489,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-24T16:19:11.740855",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0039",
@@ -426,7 +502,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-24T06:19:11.740863",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0040",
@@ -437,7 +515,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-24T05:19:11.740872",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0041",
@@ -448,7 +528,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-23T23:19:11.740883",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0042",
@@ -459,7 +541,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-24T16:19:11.740895",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0043",
@@ -470,7 +554,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-25T12:19:11.740903",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0044",
@@ -481,7 +567,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-23T19:19:11.740912",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0045",
@@ -492,7 +580,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-25T13:19:11.740922",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0046",
@@ -503,7 +593,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-24T08:19:11.740935",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0047",
@@ -514,7 +606,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-23T07:19:11.740944",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0048",
@@ -525,7 +619,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-25T08:19:11.740953",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0049",
@@ -536,7 +632,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-25T20:19:11.740961",
     "attempts": 0,
-    "status": "pending"
+    "status": "escalate_human",
+    "action": "escalate_human",
+    "reason": "No automated rule matched this payment, so escalate to a human."
   },
   {
     "payment_id": "sim_0050",
@@ -547,7 +645,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-23T06:19:11.740970",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0051",
@@ -558,7 +658,9 @@
     "decline_reason": "risk_block",
     "failed_at": "2026-08-25T16:19:11.740981",
     "attempts": 0,
-    "status": "pending"
+    "status": "escalate_human",
+    "action": "escalate_human",
+    "reason": "Risk blocks must not be automatically retried; escalate to a human for safety and compliance."
   },
   {
     "payment_id": "sim_0052",
@@ -569,7 +671,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-25T10:19:11.741004",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0053",
@@ -580,7 +684,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-23T15:19:11.741013",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0054",
@@ -591,7 +697,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-25T00:19:11.741026",
     "attempts": 0,
-    "status": "pending"
+    "status": "delayed_call",
+    "action": "delayed_call",
+    "reason": "Insufficient funds occurred before 6 PM, so delay the call until evening due to possible payday timing."
   },
   {
     "payment_id": "sim_0055",
@@ -602,7 +710,9 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-24T20:19:11.741035",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   },
   {
     "payment_id": "sim_0056",
@@ -613,7 +723,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-25T19:19:11.741045",
     "attempts": 0,
-    "status": "pending"
+    "status": "escalate_human",
+    "action": "escalate_human",
+    "reason": "No automated rule matched this payment, so escalate to a human."
   },
   {
     "payment_id": "sim_0057",
@@ -624,7 +736,9 @@
     "decline_reason": "insufficient_funds",
     "failed_at": "2026-08-23T22:19:11.741055",
     "attempts": 0,
-    "status": "pending"
+    "status": "escalate_human",
+    "action": "escalate_human",
+    "reason": "No automated rule matched this payment, so escalate to a human."
   },
   {
     "payment_id": "sim_0058",
@@ -635,7 +749,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-23T03:19:11.741064",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0059",
@@ -646,7 +762,9 @@
     "decline_reason": "bank_timeout",
     "failed_at": "2026-08-24T09:19:11.741073",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "Bank timeout may be temporary, so provide an immediate retry link."
   },
   {
     "payment_id": "sim_0060",
@@ -657,6 +775,8 @@
     "decline_reason": "otp_failure",
     "failed_at": "2026-08-24T09:19:11.741081",
     "attempts": 0,
-    "status": "pending"
+    "status": "instant_retry_link",
+    "action": "instant_retry_link",
+    "reason": "OTP failure is usually a one-off mistake, so send a retry link instead of calling."
   }
 ]
