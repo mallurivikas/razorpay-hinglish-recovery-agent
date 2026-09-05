@@ -143,10 +143,6 @@
           <span class="nav-icon" data-icon="analytics"></span>
           <span>Analytics</span>
         </button>
-        <button data-view="settings" class="nav-item flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left transition hover:bg-[#2B4570]/6">
-          <span class="nav-icon" data-icon="settings"></span>
-          <span>Settings</span>
-        </button>
       </nav>
 
       <div class="mt-auto space-y-3 border-t border-[#1C1E21]/12 pt-4 text-[13px]">
@@ -217,7 +213,6 @@
       calls: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4.5 w-4.5"><path d="M6.5 4.5h7A2.5 2.5 0 0 1 16 7v6A2.5 2.5 0 0 1 13.5 15.5H9l-4 2v-2.5H6.5A2.5 2.5 0 0 1 4 12V7a2.5 2.5 0 0 1 2.5-2.5Z"></path><path d="M7 8.5h6"></path><path d="M7 11.5h4"></path></svg>`,
       customers: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4.5 w-4.5"><path d="M10 10.2a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path><path d="M4 16.5a6 6 0 0 1 12 0"></path></svg>`,
       analytics: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4.5 w-4.5"><path d="M4 15.5h12"></path><path d="M6.5 12V7.5"></path><path d="M10 12V4.5"></path><path d="M13.5 12V9"></path></svg>`,
-      settings: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4.5 w-4.5"><path d="M10 12.8A2.8 2.8 0 1 0 10 7.2a2.8 2.8 0 0 0 0 5.6Z"></path><path d="M16 10a6 6 0 0 0-.1-1l1.5-1.1-1.5-2.6-1.8.7a6.4 6.4 0 0 0-1.7-1l-.3-1.9H7.9l-.3 1.9a6.4 6.4 0 0 0-1.7 1l-1.8-.7-1.5 2.6L4.1 9a6 6 0 0 0 0 2l-1.5 1.1 1.5 2.6 1.8-.7a6.4 6.4 0 0 0 1.7 1l.3 1.9h4.2l.3-1.9a6.4 6.4 0 0 0 1.7-1l1.8.7 1.5-2.6-1.5-1.1A6 6 0 0 0 16 10Z"></path></svg>`,
       search: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4 w-4"><path d="M9 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"></path><path d="m14 14 4 4"></path></svg>`,
       chevronRight: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4 w-4"><path d="m7 4 6 6-6 6"></path></svg>`,
       chevronLeft: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4 w-4"><path d="m13 4-6 6 6 6"></path></svg>`,
@@ -973,31 +968,6 @@
       `;
     }
 
-    function renderSettings() {
-      const sections = state.bootstrap.settings.sections;
-      return `
-        <div class="space-y-6 pb-8 max-w-4xl">
-          <div>
-            <div class="text-[28px] font-semibold tracking-tight">Settings</div>
-            <div class="mt-1 text-[13px] text-muted">Minimal operational controls for the recovery workflow.</div>
-          </div>
-          <div class="space-y-4">
-            ${sections.map((section, index) => `
-              <div class="card-border rounded-lg bg-white p-5">
-                <div class="flex items-center justify-between gap-3">
-                  <div>
-                    <div class="text-[16px] font-semibold tracking-tight">${escapeHtml(section)}</div>
-                    <div class="mt-1 text-[13px] text-muted">${index === 0 ? 'Configure the AI voice and recovery handoff rules.' : 'Operational configuration for the recovery workflow.'}</div>
-                  </div>
-                  <button class="rounded-md border border-[#1C1E21]/15 px-3 py-2 text-[13px] font-medium transition hover:border-[#2B4570]/35 hover:bg-[#2B4570]/5">Edit</button>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-    }
-
     function renderView() {
       const titleMap = {
         overview: [state.bootstrap.overview.title, state.bootstrap.overview.subtitle],
@@ -1005,7 +975,6 @@
         detail: [currentCall()?.customer_name || 'Recovery Calls', 'Call detail and recovery intelligence.'],
         customers: [state.bootstrap.customers.title, state.bootstrap.customers.subtitle],
         analytics: ['Analytics', 'Understand payment recovery performance and AI call effectiveness.'],
-        settings: ['Settings', 'Minimal operational controls for the recovery workflow.'],
       };
 
       const [title, subtitle] = titleMap[state.view] || titleMap.overview;
@@ -1018,7 +987,7 @@
       else if (state.view === 'detail') content = renderCallDetail(currentCall());
       else if (state.view === 'customers') content = renderCustomers();
       else if (state.view === 'analytics') content = renderAnalytics();
-      else content = renderSettings();
+      else content = renderOverview();
 
       document.getElementById('appRoot').innerHTML = content;
       applyViewBindings();

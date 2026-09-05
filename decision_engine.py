@@ -1,5 +1,7 @@
+"""
+This file is not been included in prototyping but can be used and cofigured while scaling
+"""
 from datetime import datetime
-
 
 def decide_action(record) -> dict:
     amount = record["amount"]

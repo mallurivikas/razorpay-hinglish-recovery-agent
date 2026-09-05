@@ -617,15 +617,6 @@ def build_bootstrap():
             "volume_over_time": analytics["volume_over_time"],
             "commitment_over_time": analytics["commitment_over_time"],
         },
-        "settings": {
-            "sections": [
-                "AI Agent Configuration",
-                "Recovery Rules",
-                "Call Configuration",
-                "Notification Preferences",
-                "System Configuration",
-            ]
-        },
         "call_detail": selected,
         "calls": operational_calls,
     }

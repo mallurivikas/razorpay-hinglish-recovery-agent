@@ -1,3 +1,6 @@
+"""
+This File was used for generating synthetic dsta for testing purposes
+"""
 import json
 import random
 from datetime import datetime, timedelta
