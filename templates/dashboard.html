@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Recovery Intelligence</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --graphite: #1C1E21;
+      --blue: #2B4570;
+      --muted: rgba(28, 30, 33, 0.58);
+      --border: rgba(28, 30, 33, 0.14);
+      --blue-soft: rgba(43, 69, 112, 0.10);
+      --blue-soft-2: rgba(43, 69, 112, 0.06);
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--white);
+      color: var(--graphite);
+      font-family: 'Inter', sans-serif;
+    }
+
+    ::selection {
+      background: var(--blue-soft);
+      color: var(--graphite);
+    }
+
+    .thin-scroll::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    .thin-scroll::-webkit-scrollbar-thumb {
+      background: rgba(28, 30, 33, 0.22);
+      border-radius: 999px;
+      border: 3px solid var(--white);
+    }
+
+    .thin-scroll::-webkit-scrollbar-track {
+      background: var(--white);
+    }
+
+    .shadow-soft {
+      box-shadow: 0 1px 0 rgba(28, 30, 33, 0.04);
+    }
+
+    .card-border {
+      border: 1px solid var(--border);
+    }
+
+    .nav-active {
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .nav-active svg {
+      color: var(--blue);
+    }
+
+    .text-muted {
+      color: var(--muted);
+    }
+
+    .badge-blue {
+      color: var(--blue);
+      background: var(--blue-soft);
+      border: 1px solid rgba(43, 69, 112, 0.26);
+    }
+
+    .badge-graphite {
+      color: var(--graphite);
+      background: rgba(28, 30, 33, 0.03);
+      border: 1px solid rgba(28, 30, 33, 0.22);
+    }
+
+    .badge-escalated {
+      color: var(--white);
+      background: var(--graphite);
+      border: 1px solid var(--graphite);
+    }
+
+    .badge-outline {
+      color: var(--graphite);
+      background: var(--white);
+      border: 1px solid rgba(28, 30, 33, 0.22);
+    }
+
+    .input-field {
+      border: 1px solid rgba(28, 30, 33, 0.18);
+      background: var(--white);
+      color: var(--graphite);
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: rgba(43, 69, 112, 0.45);
+      box-shadow: 0 0 0 3px rgba(43, 69, 112, 0.10);
+    }
+
+    .message-card {
+      border: 1px solid rgba(28, 30, 33, 0.12);
+      background: var(--white);
+    }
+
+    .message-card.ai {
+      background: rgba(43, 69, 112, 0.03);
+    }
+
+    .timeline-divider {
+      background: linear-gradient(to right, rgba(28, 30, 33, 0.10), rgba(28, 30, 33, 0.04));
+    }
+  </style>
+</head>
+<body class="overflow-hidden">
+  <div class="flex h-screen w-screen bg-white text-[#1C1E21]">
+    <aside class="hidden md:flex w-[242px] flex-col border-r border-[#1C1E21]/15 bg-white px-4 py-5 shadow-soft">
+      <div class="mb-8">
+        <div class="text-[18px] font-semibold leading-tight tracking-tight">
+          Payment Recovery<br/>Intelligence
+        </div>
+      </div>
+
+      <nav class="space-y-1 text-[14px] font-medium">
+        <button data-view="overview" class="nav-item flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left transition hover:bg-[#2B4570]/6">
+          <span class="nav-icon" data-icon="overview"></span>
+          <span>Overview</span>
+        </button>
+        <button data-view="calls" class="nav-item flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left transition hover:bg-[#2B4570]/6">
+          <span class="nav-icon" data-icon="calls"></span>
+          <span>Recovery Calls</span>
+        </button>
+        <button data-view="customers" class="nav-item flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left transition hover:bg-[#2B4570]/6">
+          <span class="nav-icon" data-icon="customers"></span>
+          <span>Customers</span>
+        </button>
+        <button data-view="analytics" class="nav-item flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left transition hover:bg-[#2B4570]/6">
+          <span class="nav-icon" data-icon="analytics"></span>
+          <span>Analytics</span>
+        </button>
+        <button data-view="settings" class="nav-item flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left transition hover:bg-[#2B4570]/6">
+          <span class="nav-icon" data-icon="settings"></span>
+          <span>Settings</span>
+        </button>
+      </nav>
+
+      <div class="mt-auto space-y-3 border-t border-[#1C1E21]/12 pt-4 text-[13px]">
+        <div class="flex items-center justify-between">
+          <span class="text-muted">System Status</span>
+          <span class="badge-blue rounded-full px-2.5 py-1 text-[12px] font-medium">Operational</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-muted">AI Agent</span>
+          <span class="badge-blue rounded-full px-2.5 py-1 text-[12px] font-medium">Online</span>
+        </div>
+        <div class="pt-2 border-t border-[#1C1E21]/10">
+          <div class="font-medium">Vikas</div>
+          <div class="text-muted">Operations</div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="flex min-w-0 flex-1 flex-col">
+      <header class="sticky top-0 z-20 border-b border-[#1C1E21]/12 bg-white/95 backdrop-blur-0">
+        <div class="flex items-center justify-between gap-4 px-4 py-3 md:px-6">
+          <div class="min-w-0">
+            <div id="pageTitle" class="text-[18px] font-semibold leading-tight tracking-tight md:text-[22px]"></div>
+            <div id="pageSubtitle" class="mt-1 text-[13px] text-muted"></div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <label class="hidden md:flex items-center gap-2 rounded-md px-3 py-2 text-[13px] input-field">
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M9 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"></path>
+                <path d="m14 14 4 4"></path>
+              </svg>
+              <input id="globalSearch" type="text" placeholder="Search" class="w-40 bg-transparent outline-none placeholder:text-[#1C1E21]/45" />
+            </label>
+
+            <select id="dateRange" class="hidden md:block rounded-md px-3 py-2 text-[13px] input-field">
+              <option>Last 7 days</option>
+              <option selected>Last 30 days</option>
+              <option>This month</option>
+              <option>Last 90 days</option>
+            </select>
+
+            <button class="inline-flex items-center justify-center rounded-md border border-[#1C1E21]/15 bg-white p-2.5 transition hover:border-[#2B4570]/35 hover:bg-[#2B4570]/5" aria-label="Notifications">
+              <svg class="h-4 w-4 text-[#1C1E21]" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M10 17a1.8 1.8 0 0 0 1.8-1.8H8.2A1.8 1.8 0 0 0 10 17Z"></path>
+                <path d="M15 13H5c1.1 0 1.8-.9 1.8-2V8.7a3.2 3.2 0 1 1 6.4 0V11c0 1.1.7 2 1.8 2Z"></path>
+              </svg>
+            </button>
+
+            <div class="hidden md:flex items-center gap-3 rounded-md border border-[#1C1E21]/15 px-3 py-2 text-[13px]">
+              <div class="flex h-8 w-8 items-center justify-center rounded-full bg-[#2B4570] text-white font-semibold">V</div>
+              <div>
+                <div class="font-medium leading-tight">Vikas</div>
+                <div class="text-muted leading-tight">Operations</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="appRoot" class="thin-scroll flex-1 overflow-y-auto bg-white px-4 py-5 md:px-6"></main>
+    </div>
+  </div>
+
+  <script>
+    const ICONS = {
+      overview: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4.5 w-4.5"><path d="M3 10h5V3H3v7Z"></path><path d="M12 17h5V10h-5v7Z"></path><path d="M12 3h5v4h-5V3Z"></path><path d="M3 17h5v-4H3v4Z"></path></svg>`,
+      calls: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4.5 w-4.5"><path d="M6.5 4.5h7A2.5 2.5 0 0 1 16 7v6A2.5 2.5 0 0 1 13.5 15.5H9l-4 2v-2.5H6.5A2.5 2.5 0 0 1 4 12V7a2.5 2.5 0 0 1 2.5-2.5Z"></path><path d="M7 8.5h6"></path><path d="M7 11.5h4"></path></svg>`,
+      customers: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4.5 w-4.5"><path d="M10 10.2a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path><path d="M4 16.5a6 6 0 0 1 12 0"></path></svg>`,
+      analytics: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4.5 w-4.5"><path d="M4 15.5h12"></path><path d="M6.5 12V7.5"></path><path d="M10 12V4.5"></path><path d="M13.5 12V9"></path></svg>`,
+      settings: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4.5 w-4.5"><path d="M10 12.8A2.8 2.8 0 1 0 10 7.2a2.8 2.8 0 0 0 0 5.6Z"></path><path d="M16 10a6 6 0 0 0-.1-1l1.5-1.1-1.5-2.6-1.8.7a6.4 6.4 0 0 0-1.7-1l-.3-1.9H7.9l-.3 1.9a6.4 6.4 0 0 0-1.7 1l-1.8-.7-1.5 2.6L4.1 9a6 6 0 0 0 0 2l-1.5 1.1 1.5 2.6 1.8-.7a6.4 6.4 0 0 0 1.7 1l.3 1.9h4.2l.3-1.9a6.4 6.4 0 0 0 1.7-1l1.8.7 1.5-2.6-1.5-1.1A6 6 0 0 0 16 10Z"></path></svg>`,
+      search: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4 w-4"><path d="M9 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z"></path><path d="m14 14 4 4"></path></svg>`,
+      chevronRight: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4 w-4"><path d="m7 4 6 6-6 6"></path></svg>`,
+      chevronLeft: `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4 w-4"><path d="m13 4-6 6 6 6"></path></svg>`,
+      play: `<svg viewBox="0 0 20 20" fill="currentColor" class="h-4.5 w-4.5"><path d="M7 5.2v9.6L14.8 10 7 5.2Z"></path></svg>`,
+      pause: `<svg viewBox="0 0 20 20" fill="currentColor" class="h-4.5 w-4.5"><path d="M6 5h2.5v10H6V5Zm5.5 0H14v10h-2.5V5Z"></path></svg>`,
+      dot: `<svg viewBox="0 0 20 20" fill="currentColor" class="h-2.5 w-2.5"><circle cx="10" cy="10" r="3.5"></circle></svg>`,
+    };
+
+    const state = {
+      view: 'overview',
+      selectedCallId: null,
+      transcriptMode: 'all',
+      query: '',
+      dateRange: 'Last 30 days',
+      filters: {
+        call_status: 'All',
+        payment_issue: 'All',
+        outcome: 'All',
+        language: 'All',
+      },
+      bootstrap: null,
+      audioSpeed: 1,
+      isPlaying: false,
+    };
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#39;');
+    }
+
+    function badgeKind(value) {
+      const label = String(value || '').toLowerCase();
+      if (label.includes('escalat')) return 'badge-escalated';
+      if (label.includes('pending') || label.includes('retry') || label.includes('commit')) return 'badge-blue';
+      if (label.includes('recovered') || label.includes('completed') || label.includes('positive')) return 'badge-blue';
+      if (label.includes('unclear')) return 'badge-outline';
+      if (label.includes('failed') || label.includes('refused')) return 'badge-graphite';
+      return 'badge-outline';
+    }
+
+    function formatPercent(value) {
+      return typeof value === 'number' ? `${value.toFixed(1)}%` : value;
+    }
+
+    function formatRate(value) {
+      if (value === '-' || value === null || value === undefined) return '-';
+      return `${value}%`;
+    }
+
+    function navIcon(name) {
+      return ICONS[name] || '';
+    }
+
+    function renderSidebarIcons() {
+      document.querySelectorAll('.nav-icon').forEach((el) => {
+        el.innerHTML = navIcon(el.dataset.icon);
+      });
+    }
+
+    function setHashFromState() {
+      const params = new URLSearchParams();
+      params.set('view', state.view);
+      if (state.selectedCallId) params.set('call', state.selectedCallId);
+      if (state.view === 'detail') params.set('mode', state.transcriptMode);
+      window.location.hash = params.toString();
+    }
+
+    function parseHash() {
+      const raw = window.location.hash.replace(/^#/, '');
+      const params = new URLSearchParams(raw);
+      state.view = params.get('view') || 'overview';
+      state.selectedCallId = params.get('call') || state.selectedCallId || null;
+      state.transcriptMode = params.get('mode') || 'all';
+    }
+
+    function currentCall() {
+      const calls = state.bootstrap?.calls || [];
+      return calls.find((call) => call.call_id === state.selectedCallId) || state.bootstrap?.call_detail || calls[0] || null;
+    }
+
+    function callMatchesSearch(call) {
+      if (!state.query) return true;
+      const haystack = [
+        call.customer_name,
+        call.phone,
+        call.payment_issue,
+        call.call_status,
+        call.sentiment,
+        call.outcome,
+        call.language,
+        call.retry_time,
+      ].join(' ').toLowerCase();
+      return haystack.includes(state.query.toLowerCase());
+    }
+
+    function filteredCalls() {
+      const calls = state.bootstrap?.recovery_calls?.calls || [];
+      return calls.filter((call) => {
+        if (!callMatchesSearch(call)) return false;
+        if (state.filters.call_status !== 'All' && call.call_status !== state.filters.call_status) return false;
+        if (state.filters.payment_issue !== 'All' && call.payment_issue !== state.filters.payment_issue) return false;
+        if (state.filters.outcome !== 'All' && call.outcome !== state.filters.outcome) return false;
+        if (state.filters.language !== 'All' && call.language !== state.filters.language) return false;
+        return true;
+      });
+    }
+
+    function barRow(label, value, max, suffix='') {
+      const width = max ? Math.max(10, (value / max) * 100) : 0;
+      return `
+        <div class="space-y-1.5">
+          <div class="flex items-center justify-between text-[13px]">
+            <span>${escapeHtml(label)}</span>
+            <span class="font-medium">${escapeHtml(value)}${escapeHtml(suffix)}</span>
+          </div>
+          <div class="h-2 rounded-full bg-[#1C1E21]/8">
+            <div class="h-2 rounded-full bg-[#2B4570]" style="width:${width}%"></div>
+          </div>
+        </div>
+      `;
+    }
+
+    function miniMetricCard(label, value, compare) {
+      return `
+        <div class="card-border rounded-lg bg-white p-4">
+          <div class="text-[13px] text-muted">${escapeHtml(label)}</div>
+          <div class="mt-2 text-[28px] font-semibold tracking-tight">${escapeHtml(value)}</div>
+          <div class="mt-2 inline-flex items-center gap-2 rounded-full badge-blue px-2.5 py-1 text-[12px] font-medium">
+            ${ICONS.dot}
+            <span>${escapeHtml(compare)}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function metricCard(label, value, compare) {
+      return `
+        <div class="card-border rounded-lg bg-white p-4 md:p-5">
+          <div class="text-[13px] text-muted">${escapeHtml(label)}</div>
+          <div class="mt-3 text-[30px] font-semibold tracking-tight md:text-[34px]">${escapeHtml(value)}</div>
+          <div class="mt-3 inline-flex items-center gap-2 rounded-full badge-blue px-2.5 py-1 text-[12px] font-medium">
+            ${ICONS.dot}
+            <span>${escapeHtml(compare)}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderFunnel(steps) {
+      return `
+        <div class="grid gap-3 lg:grid-cols-5">
+          ${steps.map((step, index) => `
+            <div class="card-border rounded-lg bg-white p-4">
+              <div class="text-[13px] text-muted">${escapeHtml(step.label)}</div>
+              <div class="mt-2 text-[24px] font-semibold tracking-tight">${escapeHtml(step.count)}</div>
+              <div class="mt-2 inline-flex items-center rounded-full badge-blue px-2.5 py-1 text-[12px] font-medium">${escapeHtml(step.pct)}%</div>
+              ${index < steps.length - 1 ? `<div class="hidden lg:block mt-4 h-[1px] timeline-divider"></div>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderTranscriptMessage(message) {
+      const speakerLabel = message.speaker === 'ai' ? 'AI Agent' : 'Customer';
+      const toneClass = message.speaker === 'ai' ? 'ai' : '';
+      const time = escapeHtml(message.timestamp || '--');
+      const blocks = [];
+
+      if (state.transcriptMode === 'all') {
+        blocks.push(`
+          <div class="space-y-3 text-[14px] leading-6">
+            <div>
+              <div class="text-[12px] font-medium text-[#2B4570]">Original</div>
+              <div class="mt-1 whitespace-pre-wrap">${escapeHtml(message.original)}</div>
+            </div>
+            <div>
+              <div class="text-[12px] font-medium text-[#2B4570]">Hinglish</div>
+              <div class="mt-1 whitespace-pre-wrap">${escapeHtml(message.transliteration)}</div>
+            </div>
+            <div>
+              <div class="text-[12px] font-medium text-[#2B4570]">English</div>
+              <div class="mt-1 whitespace-pre-wrap">${escapeHtml(message.english_translation)}</div>
+            </div>
+          </div>
+        `);
+      } else if (state.transcriptMode === 'hinglish') {
+        blocks.push(`<div class="whitespace-pre-wrap text-[14px] leading-6">${escapeHtml(message.transliteration)}</div>`);
+      } else if (state.transcriptMode === 'english') {
+        blocks.push(`<div class="whitespace-pre-wrap text-[14px] leading-6">${escapeHtml(message.english_translation)}</div>`);
+      } else {
+        blocks.push(`<div class="whitespace-pre-wrap text-[14px] leading-6">${escapeHtml(message.original)}</div>`);
+      }
+
+      return `
+        <article class="message-card ${toneClass} rounded-lg p-4 md:p-5">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <div class="text-[13px] font-semibold tracking-tight">${speakerLabel}</div>
+              <div class="mt-0.5 text-[12px] text-muted">${time}</div>
+            </div>
+            <span class="rounded-full ${message.speaker === 'ai' ? 'badge-blue' : 'badge-outline'} px-2.5 py-1 text-[12px] font-medium">${speakerLabel}</span>
+          </div>
+          <div class="mt-4">
+            ${blocks.join('')}
+          </div>
+        </article>
+      `;
+    }
+
+    function transcriptTabs() {
+      const tabs = [
+        ['original', 'Original'],
+        ['hinglish', 'Hinglish'],
+        ['english', 'English'],
+        ['all', 'All'],
+      ];
+      return tabs.map(([value, label]) => `
+        <button data-transcript-mode="${value}" class="transcript-tab rounded-full border px-3 py-1.5 text-[13px] font-medium transition ${state.transcriptMode === value ? 'badge-blue' : 'badge-outline'}">${label}</button>
+      `).join('');
+    }
+
+    function chartSvg(series, height=210) {
+      const max = Math.max(...series.map((item) => item.value), 1);
+      const width = 620;
+      const padding = 18;
+      const innerWidth = width - padding * 2;
+      const innerHeight = height - padding * 2;
+      const step = series.length > 1 ? innerWidth / (series.length - 1) : innerWidth;
+      const points = series.map((item, index) => {
+        const x = padding + (index * step);
+        const y = padding + innerHeight - ((item.value / max) * innerHeight);
+        return { x, y };
+      });
+      const line = points.map((point) => `${point.x},${point.y}`).join(' ');
+      const area = `${padding},${height - padding} ${line} ${width - padding},${height - padding}`;
+      return `
+        <svg viewBox="0 0 ${width} ${height}" class="h-[210px] w-full">
+          <defs>
+            <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2B4570" stop-opacity="0.10"></stop>
+              <stop offset="100%" stop-color="#2B4570" stop-opacity="0"></stop>
+            </linearGradient>
+          </defs>
+          ${[0, 1, 2, 3].map((index) => {
+            const y = padding + (innerHeight / 3) * index;
+            return `<line x1="${padding}" x2="${width - padding}" y1="${y}" y2="${y}" stroke="rgba(28,30,33,0.10)" stroke-width="1"></line>`;
+          }).join('')}
+          <polygon points="${area}" fill="url(#fade)"></polygon>
+          <polyline points="${line}" fill="none" stroke="#2B4570" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          ${points.map((point) => `<circle cx="${point.x}" cy="${point.y}" r="3.8" fill="#2B4570"></circle>`).join('')}
+          ${series.map((item, index) => {
+            const x = padding + (index * step);
+            return `<text x="${x}" y="${height - 4}" text-anchor="middle" fill="#1C1E21" font-size="11">${escapeHtml(item.label)}</text>`;
+          }).join('')}
+        </svg>
+      `;
+    }
+
+    function tableRowClass() {
+      return 'cursor-pointer transition hover:bg-[#2B4570]/5';
+    }
+
+    function renderOverview() {
+      const overview = state.bootstrap.overview;
+      const metrics = overview.metrics;
+      const recent = overview.recent_calls.filter(callMatchesSearch);
+      const selectedDate = state.dateRange || overview.date_range;
+      return `
+        <div class="space-y-6 pb-8">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <div class="mt-4 text-[28px] font-semibold tracking-tight">${escapeHtml(overview.title)}</div>
+              <div class="mt-1 text-[13px] text-muted">${escapeHtml(overview.subtitle)}</div>
+            </div>
+            <div class="rounded-md border border-[#1C1E21]/15 px-3 py-2 text-[13px] text-muted">${escapeHtml(selectedDate)}</div>
+          </div>
+
+          <section class="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            ${metricCard('Failed Payments', metrics.failed_payments, metrics.comparison.failed_payments)}
+            ${metricCard('Calls Initiated', metrics.calls_initiated, metrics.comparison.calls_initiated)}
+            ${metricCard('Customers Reached', metrics.customers_reached, metrics.comparison.customers_reached)}
+            ${metricCard('Recovery Commitment Rate', formatRate(metrics.recovery_commitment_rate), metrics.comparison.recovery_commitment_rate)}
+            ${metricCard('Payments Recovered', metrics.payments_recovered, metrics.comparison.payments_recovered)}
+            ${metricCard('Estimated Recovered Amount', metrics.estimated_recovered_amount, metrics.comparison.estimated_recovered_amount)}
+          </section>
+
+          <section class="card-border rounded-lg bg-white p-4 md:p-5">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-[16px] font-semibold tracking-tight">Recovery Funnel</div>
+                <div class="mt-1 text-[13px] text-muted">Failed payment flow from detection to recovery.</div>
+              </div>
+            </div>
+            <div class="mt-4">${renderFunnel(overview.funnel)}</div>
+          </section>
+
+          <section class="grid gap-4 xl:grid-cols-2">
+            <div class="card-border rounded-lg bg-white p-4 md:p-5">
+              <div class="text-[16px] font-semibold tracking-tight">Payment Failure Reasons</div>
+              <div class="mt-4 space-y-4">
+                ${overview.failure_reasons.map((row) => barRow(row.label, row.value, 34, '%')).join('')}
+              </div>
+            </div>
+            <div class="card-border rounded-lg bg-white p-4 md:p-5">
+              <div class="text-[16px] font-semibold tracking-tight">Recovery Outcomes</div>
+              <div class="mt-4 space-y-4">
+                ${overview.recovery_outcomes.map((row) => barRow(row.label, row.value, 42, '%')).join('')}
+              </div>
+            </div>
+          </section>
+
+          <section class="card-border rounded-lg bg-white p-4 md:p-5">
+            <div class="flex items-center justify-between gap-4">
+              <div>
+                <div class="text-[16px] font-semibold tracking-tight">Recent Recovery Calls</div>
+                <div class="mt-1 text-[13px] text-muted">Click a row to open the call detail screen.</div>
+              </div>
+              <button data-goto="calls" class="rounded-md border border-[#2B4570]/25 bg-[#2B4570]/6 px-3 py-2 text-[13px] font-medium text-[#2B4570]">Open recovery calls</button>
+            </div>
+            <div class="mt-4 overflow-hidden rounded-lg border border-[#1C1E21]/12">
+              <table class="min-w-full divide-y divide-[#1C1E21]/12 text-left text-[13px]">
+                <thead class="bg-[#2B4570]/4 text-[#1C1E21]">
+                  <tr>
+                    <th class="px-4 py-3 font-medium">Customer</th>
+                    <th class="px-4 py-3 font-medium">Payment Issue</th>
+                    <th class="px-4 py-3 font-medium">Call Status</th>
+                    <th class="px-4 py-3 font-medium">Commitment</th>
+                    <th class="px-4 py-3 font-medium">Retry Time</th>
+                    <th class="px-4 py-3 font-medium">Sentiment</th>
+                    <th class="px-4 py-3 font-medium">Outcome</th>
+                    <th class="px-4 py-3 font-medium">Duration</th>
+                    <th class="px-4 py-3 font-medium">Time</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[#1C1E21]/10">
+                  ${recent.map((call) => `
+                    <tr class="call-row ${tableRowClass()}" data-call-id="${escapeHtml(call.call_id)}">
+                      <td class="px-4 py-3 font-medium">${escapeHtml(call.customer_name)}</td>
+                      <td class="px-4 py-3">${escapeHtml(call.payment_issue)}</td>
+                      <td class="px-4 py-3"><span class="rounded-full ${badgeKind(call.call_status)} px-2.5 py-1 text-[12px] font-medium">${escapeHtml(call.call_status)}</span></td>
+                      <td class="px-4 py-3">${escapeHtml(call.commitment)}</td>
+                      <td class="px-4 py-3">${escapeHtml(call.retry_time)}</td>
+                      <td class="px-4 py-3">${escapeHtml(call.sentiment)}</td>
+                      <td class="px-4 py-3">${escapeHtml(call.outcome)}</td>
+                      <td class="px-4 py-3">${escapeHtml(call.duration)}</td>
+                      <td class="px-4 py-3">${escapeHtml(call.timestamp)}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    function renderCallsPage() {
+      const data = state.bootstrap.recovery_calls;
+      const calls = filteredCalls();
+      return `
+        <div class="space-y-6 pb-8">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <div class="mt-4 text-[28px] font-semibold tracking-tight">${escapeHtml(data.title)}</div>
+              <div class="mt-1 text-[13px] text-muted">${escapeHtml(data.subtitle)}</div>
+            </div>
+            <div class="rounded-md border border-[#1C1E21]/15 px-3 py-2 text-[13px] text-muted">${escapeHtml(state.dateRange)}</div>
+          </div>
+
+          <section class="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+            ${miniMetricCard('Total Calls', data.summary.total_calls, '-')}
+            ${miniMetricCard('Completed', data.summary.completed, '-')}
+            ${miniMetricCard('Customers Reached', data.summary.customers_reached, '-')}
+            ${miniMetricCard('Average Duration', data.summary.average_duration, '-')}
+            ${miniMetricCard('Recovery Commitment', formatRate(data.summary.recovery_commitment), '-')}
+          </section>
+
+          <section class="card-border rounded-lg bg-white p-4 md:p-5">
+            <div class="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+              <label class="flex flex-col gap-1 text-[13px]">
+                <span class="text-muted">Search</span>
+                <div class="flex items-center gap-2 rounded-md px-3 py-2 input-field">
+                  ${ICONS.search}
+                  <input id="tableSearch" type="text" value="${escapeHtml(state.query)}" placeholder="Search calls" class="w-full bg-transparent outline-none placeholder:text-[#1C1E21]/45" />
+                </div>
+              </label>
+              <label class="flex flex-col gap-1 text-[13px]">
+                <span class="text-muted">Date</span>
+                <select id="filterDate" class="rounded-md px-3 py-2 input-field">
+                  <option>Last 7 days</option>
+                  <option selected>Last 30 days</option>
+                  <option>This month</option>
+                  <option>Last 90 days</option>
+                </select>
+              </label>
+              <label class="flex flex-col gap-1 text-[13px]">
+                <span class="text-muted">Call Status</span>
+                <select id="filterStatus" class="rounded-md px-3 py-2 input-field">
+                  ${data.filters.call_status.map((item) => `<option ${state.filters.call_status === item ? 'selected' : ''}>${item}</option>`).join('')}
+                </select>
+              </label>
+              <label class="flex flex-col gap-1 text-[13px]">
+                <span class="text-muted">Payment Issue</span>
+                <select id="filterIssue" class="rounded-md px-3 py-2 input-field">
+                  ${data.filters.payment_issue.map((item) => `<option ${state.filters.payment_issue === item ? 'selected' : ''}>${item}</option>`).join('')}
+                </select>
+              </label>
+              <label class="flex flex-col gap-1 text-[13px]">
+                <span class="text-muted">Outcome</span>
+                <select id="filterOutcome" class="rounded-md px-3 py-2 input-field">
+                  ${data.filters.outcome.map((item) => `<option ${state.filters.outcome === item ? 'selected' : ''}>${item}</option>`).join('')}
+                </select>
+              </label>
+              <label class="flex flex-col gap-1 text-[13px]">
+                <span class="text-muted">Language</span>
+                <select id="filterLanguage" class="rounded-md px-3 py-2 input-field">
+                  ${data.filters.language.map((item) => `<option ${state.filters.language === item ? 'selected' : ''}>${item}</option>`).join('')}
+                </select>
+              </label>
+            </div>
+          </section>
+
+          <section class="card-border rounded-lg bg-white overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="min-w-full divide-y divide-[#1C1E21]/12 text-left text-[13px]">
+                <thead class="bg-[#2B4570]/4">
+                  <tr>
+                    <th class="px-4 py-3 font-medium">Customer</th>
+                    <th class="px-4 py-3 font-medium">Phone</th>
+                    <th class="px-4 py-3 font-medium">Payment Issue</th>
+                    <th class="px-4 py-3 font-medium">Call Status</th>
+                    <th class="px-4 py-3 font-medium">Duration</th>
+                    <th class="px-4 py-3 font-medium">Sentiment</th>
+                    <th class="px-4 py-3 font-medium">Commitment</th>
+                    <th class="px-4 py-3 font-medium">Retry Time</th>
+                    <th class="px-4 py-3 font-medium">Outcome</th>
+                    <th class="px-4 py-3 font-medium">Timestamp</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-[#1C1E21]/10">
+                  ${calls.map((call) => `
+                    <tr class="call-row ${tableRowClass()}" data-call-id="${escapeHtml(call.call_id)}">
+                      <td class="px-4 py-3 font-medium">${escapeHtml(call.customer_name)}</td>
+                      <td class="px-4 py-3">${escapeHtml(call.phone)}</td>
+                      <td class="px-4 py-3">${escapeHtml(call.payment_issue)}</td>
+                      <td class="px-4 py-3"><span class="rounded-full ${badgeKind(call.call_status)} px-2.5 py-1 text-[12px] font-medium">${escapeHtml(call.call_status)}</span></td>
+                      <td class="px-4 py-3">${escapeHtml(call.duration)}</td>
+                      <td class="px-4 py-3">${escapeHtml(call.sentiment)}</td>
+                      <td class="px-4 py-3">${escapeHtml(call.commitment)}</td>
+                      <td class="px-4 py-3">${escapeHtml(call.retry_time)}</td>
+                      <td class="px-4 py-3">${escapeHtml(call.outcome)}</td>
+                      <td class="px-4 py-3">${escapeHtml(call.timestamp)}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    function renderCallDetail(call) {
+      if (!call) {
+        return `<div class="card-border rounded-lg bg-white p-6">Call not found.</div>`;
+      }
+      const analysis = call.analysis || {};
+      const customerIntent = analysis.customer_intent || call.customer_intent || {};
+      const recovery = analysis.recovery || call.recovery || {};
+      const payment = analysis.payment || {};
+      const language = analysis.language || call.language || {};
+      const evaluation = analysis.agent_effectiveness || call.agent_evaluation || {};
+      const promises = analysis.agent_promises || call.agent_promises || [];
+      const transcript = analysis.transcript || call.transcript || [];
+      const title = `${escapeHtml(call.customer_name)} · ${escapeHtml(call.phone)} · ${escapeHtml(call.account_id)}`;
+      const recording = call.recording_url;
+
+      return `
+        <div class="space-y-6 pb-8">
+          <div class="flex items-center justify-between gap-4">
+            <button data-goto="calls" class="inline-flex items-center gap-2 rounded-md border border-[#1C1E21]/15 px-3 py-2 text-[13px] font-medium transition hover:border-[#2B4570]/35 hover:bg-[#2B4570]/5">
+              ${ICONS.chevronLeft}
+              Recovery Calls
+            </button>
+            <div class="flex items-center gap-2 text-[13px] text-muted">
+              <span class="rounded-full ${badgeKind(call.call_status)} px-2.5 py-1 text-[12px] font-medium">${escapeHtml(call.call_status)}</span>
+              <span>${escapeHtml(call.duration)}</span>
+              <span>${escapeHtml(call.date_time)}</span>
+            </div>
+          </div>
+
+          <section class="card-border rounded-lg bg-white p-5">
+            <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+              <div>
+                <div class="text-[24px] font-semibold tracking-tight">${escapeHtml(call.customer_name)}</div>
+                <div class="mt-1 text-[13px] text-muted">${escapeHtml(call.phone)} · ${escapeHtml(call.account_id)}</div>
+              </div>
+              <div class="flex flex-wrap items-center gap-2 text-[13px] text-muted">
+                <span class="rounded-full badge-blue px-2.5 py-1 font-medium">${escapeHtml(call.call_status)}</span>
+                <span class="rounded-full badge-outline px-2.5 py-1 font-medium">${escapeHtml(call.duration)}</span>
+                <span class="rounded-full badge-outline px-2.5 py-1 font-medium">${escapeHtml(call.date_time)}</span>
+              </div>
+            </div>
+            <div class="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              <div class="rounded-lg border border-[#1C1E21]/12 p-4">
+                <div class="text-[12px] text-muted">Payment Issue</div>
+                <div class="mt-1 font-medium">${escapeHtml(payment.issue || call.payment_issue)}</div>
+              </div>
+              <div class="rounded-lg border border-[#1C1E21]/12 p-4">
+                <div class="text-[12px] text-muted">Customer Intent</div>
+                <div class="mt-1 font-medium">${escapeHtml(customerIntent.commitment_level || 'Unknown')}</div>
+              </div>
+              <div class="rounded-lg border border-[#1C1E21]/12 p-4">
+                <div class="text-[12px] text-muted">Commitment Level</div>
+                <div class="mt-1 font-medium">${escapeHtml(customerIntent.commitment_level || 'Unknown')}</div>
+              </div>
+              <div class="rounded-lg border border-[#1C1E21]/12 p-4">
+                <div class="text-[12px] text-muted">Retry Timeframe</div>
+                <div class="mt-1 font-medium">${escapeHtml(customerIntent.retry_time || 'Unknown')}</div>
+              </div>
+              <div class="rounded-lg border border-[#1C1E21]/12 p-4">
+                <div class="text-[12px] text-muted">Recovery Outcome</div>
+                <div class="mt-1 font-medium">${escapeHtml(recovery.outcome || 'Unknown')}</div>
+              </div>
+              <div class="rounded-lg border border-[#1C1E21]/12 p-4">
+                <div class="text-[12px] text-muted">Follow-up Requirement</div>
+                <div class="mt-1 font-medium">${recovery.follow_up_required ? 'Reminder required' : 'Not required'}</div>
+              </div>
+              <div class="rounded-lg border border-[#1C1E21]/12 p-4">
+                <div class="text-[12px] text-muted">Language</div>
+                <div class="mt-1 font-medium">${escapeHtml(language.primary || 'Unknown')}</div>
+              </div>
+              <div class="rounded-lg border border-[#1C1E21]/12 p-4">
+                <div class="text-[12px] text-muted">Agent</div>
+                <div class="mt-1 font-medium">${escapeHtml(call.agent_name)}</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="grid gap-4 xl:grid-cols-[1.4fr_0.9fr]">
+            <div class="space-y-4">
+              <div class="card-border rounded-lg bg-white p-5">
+                <div class="flex items-center justify-between gap-3">
+                  <div>
+                    <div class="text-[16px] font-semibold tracking-tight">Call Recording</div>
+                    <div class="mt-1 text-[13px] text-muted">Professional playback with speed control.</div>
+                  </div>
+                  <div class="text-[13px] text-muted">${recording ? 'Recording available' : 'Recording unavailable'}</div>
+                </div>
+                <div class="mt-4 rounded-lg border border-[#1C1E21]/12 p-4">
+                  <audio id="audioPlayer" class="hidden" ${recording ? `src="${escapeHtml(recording)}"` : ''} preload="metadata"></audio>
+                  <div class="flex flex-wrap items-center gap-3">
+                    <button id="audioToggle" class="inline-flex items-center gap-2 rounded-md border border-[#2B4570]/25 bg-[#2B4570]/6 px-3 py-2 text-[13px] font-medium text-[#2B4570] ${recording ? '' : 'opacity-50 cursor-not-allowed'}" ${recording ? '' : 'disabled'}>
+                      ${ICONS.play}
+                      <span>Play</span>
+                    </button>
+                    <div class="min-w-[180px] flex-1">
+                      <input id="audioProgress" type="range" min="0" max="1000" value="0" class="w-full accent-[#2B4570]" ${recording ? '' : 'disabled'}>
+                    </div>
+                    <div id="audioTime" class="rounded-full badge-outline px-2.5 py-1 text-[12px] font-medium">0:00 / 0:55</div>
+                    <select id="audioSpeed" class="rounded-md px-3 py-2 text-[13px] input-field" ${recording ? '' : 'disabled'}>
+                      <option value="1">1x</option>
+                      <option value="1.25">1.25x</option>
+                      <option value="1.5">1.5x</option>
+                      <option value="2">2x</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-border rounded-lg bg-white p-5">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <div class="text-[16px] font-semibold tracking-tight">Transcript</div>
+                    <div class="mt-1 text-[13px] text-muted">Chronological conversation with language toggles.</div>
+                  </div>
+                  <div class="flex flex-wrap gap-2">${transcriptTabs()}</div>
+                </div>
+
+                <div id="transcriptList" class="thin-scroll mt-4 max-h-[620px] space-y-3 overflow-y-auto pr-1">
+                  ${transcript.map(renderTranscriptMessage).join('')}
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <div class="card-border rounded-lg bg-white p-5">
+                <div class="text-[16px] font-semibold tracking-tight">Call Intelligence</div>
+                <div class="mt-4 space-y-4 text-[13px] leading-6">
+                  <div class="rounded-lg border border-[#1C1E21]/12 p-4">
+                    <div class="text-[12px] text-muted">Payment</div>
+                    <div class="mt-1 font-medium">Failure Reason: ${escapeHtml(payment.issue || call.payment_issue)}</div>
+                    <div class="mt-1 text-muted">Customer Stated Reason: ${escapeHtml(payment.customer_stated_reason || 'Unknown')}</div>
+                  </div>
+                  <div class="rounded-lg border border-[#1C1E21]/12 p-4">
+                    <div class="text-[12px] text-muted">Customer Intent</div>
+                    <div class="mt-1 font-medium">Willing to Retry: ${customerIntent.willing_to_retry ? 'Yes' : 'No'}</div>
+                    <div class="mt-1 text-muted">Commitment Level: ${escapeHtml(customerIntent.commitment_level || 'Unknown')}</div>
+                    <div class="mt-1 text-muted">Retry Timeframe: ${escapeHtml(customerIntent.retry_time || 'Unknown')}</div>
+                    <div class="mt-1 text-muted">Commitment Evidence: ${escapeHtml(customerIntent.commitment_evidence || 'Unknown')}</div>
+                  </div>
+                  <div class="rounded-lg border border-[#1C1E21]/12 p-4">
+                    <div class="text-[12px] text-muted">Recovery</div>
+                    <div class="mt-1 font-medium">Outcome: ${escapeHtml(recovery.outcome || 'Unknown')}</div>
+                    <div class="mt-1 text-muted">Recommended Action: ${escapeHtml(recovery.recommended_action || 'Unknown')}</div>
+                    <div class="mt-1 text-muted">Follow-up Required: ${recovery.follow_up_required ? 'Yes' : 'No'}</div>
+                    <div class="mt-1 text-muted">Follow-up Time: ${escapeHtml(recovery.follow_up_time || 'Unknown')}</div>
+                  </div>
+                  <div class="rounded-lg border border-[#1C1E21]/12 p-4">
+                    <div class="text-[12px] text-muted">Customer</div>
+                    <div class="mt-1 font-medium">Language: ${escapeHtml(language.primary || 'Unknown')}</div>
+                    <div class="mt-1 text-muted">Style: ${escapeHtml(language.style || 'Unknown')}</div>
+                    <div class="mt-1 text-muted">Tone: Cooperative</div>
+                    <div class="mt-1 text-muted">Objections: ${(analysis.objections || []).length ? escapeHtml((analysis.objections || []).join(', ')) : 'None'}</div>
+                    <div class="mt-1 text-muted">Concerns: ${(analysis.customer_concerns || []).length ? escapeHtml((analysis.customer_concerns || []).join(', ')) : 'None'}</div>
+                  </div>
+                  <div class="rounded-lg border border-[#1C1E21]/12 p-4">
+                    <div class="text-[12px] text-muted">AI Agent Evaluation</div>
+                    <div class="mt-1 font-medium">Effectiveness Score: ${escapeHtml(evaluation.score || 'Unknown')} / 10</div>
+                    <div class="mt-3 text-muted">Strengths:</div>
+                    <ul class="mt-1 space-y-1 list-disc pl-5">
+                      ${(evaluation.strengths || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('') || '<li>Unknown</li>'}
+                    </ul>
+                    <div class="mt-3 text-muted">Issues:</div>
+                    <ul class="mt-1 space-y-1 list-disc pl-5">
+                      ${(evaluation.issues || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('') || '<li>Unknown</li>'}
+                    </ul>
+                    <div class="mt-4 grid gap-3 md:grid-cols-2">
+                      <div class="rounded-lg border border-[#1C1E21]/12 p-3">
+                        <div class="text-[12px] text-muted">Agent promised</div>
+                        <div class="mt-1 font-medium">${escapeHtml((promises[0] && promises[0].promise) || 'Unknown')}</div>
+                      </div>
+                      <div class="rounded-lg border border-[#1C1E21]/12 p-3">
+                        <div class="text-[12px] text-muted">System verified</div>
+                        <div class="mt-1 font-medium">${promises[0] && promises[0].execution_verified ? 'Verified' : 'Not yet verified'}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <details class="card-border rounded-lg bg-white p-5" ${state.metadataOpen ? 'open' : ''}>
+                <summary class="cursor-pointer list-none text-[16px] font-semibold tracking-tight">Technical Metadata</summary>
+                <div class="mt-4 grid gap-3 md:grid-cols-2">
+                  ${Object.entries(call.technical_metadata || {}).map(([key, value]) => `
+                    <div class="rounded-lg border border-[#1C1E21]/12 p-3">
+                      <div class="text-[12px] text-muted">${escapeHtml(key)}</div>
+                      <div class="mt-1 text-[13px] font-medium break-words">${escapeHtml(value ?? '--')}</div>
+                    </div>
+                  `).join('')}
+                </div>
+              </details>
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    function renderCustomers() {
+      const rows = state.bootstrap.customers.rows;
+      return `
+        <div class="space-y-6 pb-8">
+          <div>
+            <div class="text-[28px] font-semibold tracking-tight">${escapeHtml(state.bootstrap.customers.title)}</div>
+            <div class="mt-1 text-[13px] text-muted">${escapeHtml(state.bootstrap.customers.subtitle)}</div>
+          </div>
+          <section class="card-border rounded-lg bg-white overflow-hidden">
+            <table class="min-w-full divide-y divide-[#1C1E21]/12 text-left text-[13px]">
+              <thead class="bg-[#2B4570]/4">
+                <tr>
+                  <th class="px-4 py-3 font-medium">Customer</th>
+                  <th class="px-4 py-3 font-medium">Phone</th>
+                  <th class="px-4 py-3 font-medium">Total Failed Payments</th>
+                  <th class="px-4 py-3 font-medium">Calls</th>
+                  <th class="px-4 py-3 font-medium">Last Call</th>
+                  <th class="px-4 py-3 font-medium">Latest Payment Issue</th>
+                  <th class="px-4 py-3 font-medium">Recovery Status</th>
+                  <th class="px-4 py-3 font-medium">Last Known Intent</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#1C1E21]/10">
+                ${rows.map((row) => `
+                  <tr class="cursor-pointer transition hover:bg-[#2B4570]/5" title="Customer detail is not available yet">
+                    <td class="px-4 py-3 font-medium">${escapeHtml(row.customer_name)}</td>
+                    <td class="px-4 py-3">${escapeHtml(row.phone)}</td>
+                    <td class="px-4 py-3">${escapeHtml(row.total_failed_payments)}</td>
+                    <td class="px-4 py-3">${escapeHtml(row.calls)}</td>
+                    <td class="px-4 py-3">${escapeHtml(row.last_call)}</td>
+                    <td class="px-4 py-3">${escapeHtml(row.latest_payment_issue)}</td>
+                    <td class="px-4 py-3"><span class="rounded-full ${badgeKind(row.recovery_status)} px-2.5 py-1 text-[12px] font-medium">${escapeHtml(row.recovery_status)}</span></td>
+                    <td class="px-4 py-3">${escapeHtml(row.last_known_intent)}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </section>
+        </div>
+      `;
+    }
+
+    function renderAnalytics() {
+      const analytics = state.bootstrap.analytics;
+      return `
+        <div class="space-y-6 pb-8">
+          <div>
+            <div class="mt-4 text-[28px] font-semibold tracking-tight">Analytics</div>
+            <div class="mt-1 text-[13px] text-muted">Understand payment recovery performance and AI call effectiveness.</div>
+          </div>
+
+          <section class="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            ${miniMetricCard('Recovery Rate', formatRate(analytics.recovery_rate), '-')}
+            ${miniMetricCard('Contact Rate', formatRate(analytics.contact_rate), '-')}
+            ${miniMetricCard('Retry Commitment Rate', formatRate(analytics.retry_commitment_rate), '-')}
+            ${miniMetricCard('Payment Recovery Rate', formatRate(analytics.payment_recovery_rate), '-')}
+            ${miniMetricCard('Average Time to Retry', analytics.average_time_to_retry, '-')}
+            ${miniMetricCard('Average Call Duration', analytics.average_call_duration, '-')}
+            ${miniMetricCard('Average Agent Effectiveness', analytics.average_agent_effectiveness, '-')}
+            ${miniMetricCard('Human Escalation Rate', formatRate(analytics.human_escalation_rate), '-')}
+          </section>
+
+          <section class="grid gap-4 xl:grid-cols-2">
+            <div class="card-border rounded-lg bg-white p-5">
+              <div class="text-[16px] font-semibold tracking-tight">Recovery by Payment Failure Reason</div>
+              <div class="mt-4 space-y-4">${state.bootstrap.analytics.failure_reasons.map((row) => barRow(row.label, row.value, 34, '%')).join('')}</div>
+            </div>
+            <div class="card-border rounded-lg bg-white p-5">
+              <div class="text-[16px] font-semibold tracking-tight">Recovery by Language</div>
+              <div class="mt-4 space-y-4">${state.bootstrap.analytics.language_breakdown.map((row) => barRow(row.label, row.value, 48, '%')).join('')}</div>
+            </div>
+            <div class="card-border rounded-lg bg-white p-5">
+              <div class="text-[16px] font-semibold tracking-tight">Recovery by Customer Sentiment</div>
+              <div class="mt-4 space-y-4">${state.bootstrap.analytics.sentiment_breakdown.map((row) => barRow(row.label, row.value, 39, '%')).join('')}</div>
+            </div>
+            <div class="card-border rounded-lg bg-white p-5">
+              <div class="text-[16px] font-semibold tracking-tight">Recovery by Time of Day</div>
+              <div class="mt-4 space-y-4">${state.bootstrap.analytics.time_of_day.map((row) => barRow(row.label, row.value, 31, '')).join('')}</div>
+            </div>
+            <div class="card-border rounded-lg bg-white p-5 xl:col-span-2">
+              <div class="text-[16px] font-semibold tracking-tight">Call Volume Over Time</div>
+              <div class="mt-4">${chartSvg(state.bootstrap.analytics.volume_over_time)}</div>
+            </div>
+            <div class="card-border rounded-lg bg-white p-5 xl:col-span-2">
+              <div class="text-[16px] font-semibold tracking-tight">Recovery Commitment Over Time</div>
+              <div class="mt-4">${chartSvg(state.bootstrap.analytics.commitment_over_time)}</div>
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    function renderSettings() {
+      const sections = state.bootstrap.settings.sections;
+      return `
+        <div class="space-y-6 pb-8 max-w-4xl">
+          <div>
+            <div class="text-[28px] font-semibold tracking-tight">Settings</div>
+            <div class="mt-1 text-[13px] text-muted">Minimal operational controls for the recovery workflow.</div>
+          </div>
+          <div class="space-y-4">
+            ${sections.map((section, index) => `
+              <div class="card-border rounded-lg bg-white p-5">
+                <div class="flex items-center justify-between gap-3">
+                  <div>
+                    <div class="text-[16px] font-semibold tracking-tight">${escapeHtml(section)}</div>
+                    <div class="mt-1 text-[13px] text-muted">${index === 0 ? 'Configure the AI voice and recovery handoff rules.' : 'Operational configuration for the recovery workflow.'}</div>
+                  </div>
+                  <button class="rounded-md border border-[#1C1E21]/15 px-3 py-2 text-[13px] font-medium transition hover:border-[#2B4570]/35 hover:bg-[#2B4570]/5">Edit</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderView() {
+      const titleMap = {
+        overview: [state.bootstrap.overview.title, state.bootstrap.overview.subtitle],
+        calls: [state.bootstrap.recovery_calls.title, state.bootstrap.recovery_calls.subtitle],
+        detail: [currentCall()?.customer_name || 'Recovery Calls', 'Call detail and recovery intelligence.'],
+        customers: [state.bootstrap.customers.title, state.bootstrap.customers.subtitle],
+        analytics: ['Analytics', 'Understand payment recovery performance and AI call effectiveness.'],
+        settings: ['Settings', 'Minimal operational controls for the recovery workflow.'],
+      };
+
+      const [title, subtitle] = titleMap[state.view] || titleMap.overview;
+      document.getElementById('pageTitle').textContent = title;
+      document.getElementById('pageSubtitle').textContent = subtitle;
+
+      let content = '';
+      if (state.view === 'overview') content = renderOverview();
+      else if (state.view === 'calls') content = renderCallsPage();
+      else if (state.view === 'detail') content = renderCallDetail(currentCall());
+      else if (state.view === 'customers') content = renderCustomers();
+      else if (state.view === 'analytics') content = renderAnalytics();
+      else content = renderSettings();
+
+      document.getElementById('appRoot').innerHTML = content;
+      applyViewBindings();
+      updateNavState();
+    }
+
+    function updateNavState() {
+      document.querySelectorAll('.nav-item').forEach((button) => {
+        const active = button.dataset.view === state.view;
+        button.classList.toggle('nav-active', active);
+      });
+    }
+
+    function applyViewBindings() {
+      document.querySelectorAll('[data-call-id]').forEach((row) => {
+        row.addEventListener('click', () => {
+          state.view = 'detail';
+          state.selectedCallId = row.dataset.callId;
+          setHashFromState();
+          renderView();
+        });
+      });
+
+      document.querySelectorAll('[data-goto]').forEach((button) => {
+        button.addEventListener('click', () => {
+          state.view = button.dataset.goto;
+          setHashFromState();
+          renderView();
+        });
+      });
+
+      document.querySelectorAll('[data-transcript-mode]').forEach((button) => {
+        button.addEventListener('click', () => {
+          state.transcriptMode = button.dataset.transcriptMode;
+          setHashFromState();
+          renderView();
+        });
+      });
+
+      const tableSearch = document.getElementById('tableSearch');
+      if (tableSearch) {
+        tableSearch.addEventListener('input', (event) => {
+          state.query = event.target.value;
+          renderView();
+        });
+      }
+
+      ['filterStatus', 'filterIssue', 'filterOutcome', 'filterLanguage'].forEach((id) => {
+        const element = document.getElementById(id);
+        if (!element) return;
+        element.addEventListener('change', (event) => {
+          const keyMap = {
+            filterStatus: 'call_status',
+            filterIssue: 'payment_issue',
+            filterOutcome: 'outcome',
+            filterLanguage: 'language',
+          };
+          state.filters[keyMap[id]] = event.target.value;
+          renderView();
+        });
+      });
+
+      const audio = document.getElementById('audioPlayer');
+      const toggle = document.getElementById('audioToggle');
+      const progress = document.getElementById('audioProgress');
+      const speed = document.getElementById('audioSpeed');
+      const time = document.getElementById('audioTime');
+      if (audio && toggle) {
+        const iconSpan = toggle.querySelector('svg');
+        const labelSpan = toggle.querySelector('span');
+        const setButton = () => {
+          if (audio.paused) {
+            toggle.innerHTML = `${ICONS.play}<span>Play</span>`;
+          } else {
+            toggle.innerHTML = `${ICONS.pause}<span>Pause</span>`;
+          }
+        };
+
+        toggle.addEventListener('click', () => {
+          if (!audio.src) return;
+          if (audio.paused) {
+            audio.play();
+            state.isPlaying = true;
+          } else {
+            audio.pause();
+            state.isPlaying = false;
+          }
+          setButton();
+        });
+
+        audio.addEventListener('loadedmetadata', () => {
+          if (progress) progress.value = 0;
+          if (time) time.textContent = `0:00 / ${formatAudioTime(audio.duration)}`;
+        });
+        audio.addEventListener('timeupdate', () => {
+          if (progress && audio.duration) {
+            progress.value = String((audio.currentTime / audio.duration) * 1000);
+          }
+          if (time) time.textContent = `${formatAudioTime(audio.currentTime)} / ${formatAudioTime(audio.duration)}`;
+        });
+        audio.addEventListener('ended', () => {
+          state.isPlaying = false;
+          setButton();
+        });
+        if (progress) {
+          progress.addEventListener('input', (event) => {
+            if (!audio.duration) return;
+            audio.currentTime = (event.target.value / 1000) * audio.duration;
+          });
+        }
+        if (speed) {
+          speed.value = String(state.audioSpeed);
+          speed.addEventListener('change', (event) => {
+            state.audioSpeed = Number(event.target.value);
+            audio.playbackRate = state.audioSpeed;
+          });
+        }
+        audio.playbackRate = state.audioSpeed;
+      }
+    }
+
+    function formatAudioTime(seconds) {
+      if (!Number.isFinite(seconds)) return '0:00';
+      const whole = Math.max(0, Math.floor(seconds));
+      const minutes = Math.floor(whole / 60);
+      const remainder = String(whole % 60).padStart(2, '0');
+      return `${minutes}:${remainder}`;
+    }
+
+    async function boot() {
+      const response = await fetch('/api/bootstrap');
+      state.bootstrap = await response.json();
+      parseHash();
+
+      if (!state.selectedCallId && state.bootstrap.call_detail) {
+        state.selectedCallId = state.bootstrap.call_detail.call_id;
+      }
+
+      document.getElementById('globalSearch').value = state.query;
+      document.getElementById('dateRange').value = state.dateRange;
+
+      document.querySelectorAll('.nav-item').forEach((button) => {
+        button.addEventListener('click', () => {
+          state.view = button.dataset.view;
+          if (state.view !== 'detail') state.selectedCallId = null;
+          setHashFromState();
+          renderView();
+        });
+      });
+
+      document.getElementById('globalSearch').addEventListener('input', (event) => {
+        state.query = event.target.value;
+        if (state.view === 'calls' || state.view === 'overview') {
+          renderView();
+        }
+      });
+
+      document.getElementById('dateRange').addEventListener('change', (event) => {
+        state.dateRange = event.target.value;
+        renderView();
+      });
+
+      window.addEventListener('hashchange', () => {
+        parseHash();
+        renderView();
+      });
+
+      renderSidebarIcons();
+      renderView();
+    }
+
+    boot();
+  </script>
+</body>
+</html>

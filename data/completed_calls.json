@@ -1,0 +1,555 @@
+{
+  "unknown": {
+    "test-123": {
+      "call_id": "test-123",
+      "event_type": "all_processing_completed",
+      "received_at": "2026-09-04T06:42:34.134346+00:00",
+      "caller_id": "unknown",
+      "to_number": null,
+      "from_number": null,
+      "call_sid": null,
+      "call_type": null,
+      "status": null,
+      "sub_status": null,
+      "call_duration": null,
+      "called_on": null,
+      "created_at": null,
+      "agent_id": null,
+      "agent_name": null,
+      "version_id": null,
+      "version_slug": null,
+      "call_cost": null,
+      "overall_latency_seconds": null,
+      "first_utterance_seconds": null,
+      "custom_args_values": null,
+      "agent_message_count": null,
+      "user_message_count": null,
+      "transcript": [],
+      "recording_url": null,
+      "platform_analysis": null,
+      "platform_analysis_status": null,
+      "client_analysis": null,
+      "client_analysis_status": null,
+      "tool_call_logs": []
+    }
+  },
+  "+916309765716": {
+    "01a06b28-b40e-7db2-a444-5499e25afe9c": {
+      "call_id": "01a06b28-b40e-7db2-a444-5499e25afe9c",
+      "event_type": "all_processing_completed",
+      "received_at": "2026-09-04T06:46:17.806599+00:00",
+      "caller_id": "+916309765716",
+      "to_number": "+916309765716",
+      "from_number": "+18154354644",
+      "call_sid": "CAc80ace9551c97cc75915087f2449597e",
+      "call_type": "outbound",
+      "status": "completed",
+      "sub_status": "ACCEPTED",
+      "call_duration": 55.67,
+      "called_on": "2026-09-04T06:44:31.223537+00:00",
+      "created_at": "2026-09-04T06:43:44.784009+00:00",
+      "agent_id": "d011c8f4-2f61-4d5f-8872-a839d5f822c7",
+      "agent_name": "Tiffany from RINGG AI",
+      "version_id": "cccc26a1-ff02-4add-984e-3b5d376c1878",
+      "version_slug": "v1",
+      "call_cost": 6.0,
+      "overall_latency_seconds": 1.009448,
+      "first_utterance_seconds": 1.074223,
+      "custom_args_values": {
+        "account_id": "ACC-42",
+        "callee_name": "vikas",
+        "mobile_number": "+916309765716"
+      },
+      "agent_message_count": 6,
+      "user_message_count": 8,
+      "transcript": [
+        {
+          "bot": "Namaste at {Callee Name} ji, main Aditi bol rahi hoon, ek automated AI assistant, at {Merchant Name} ki taraf se. Aapka ₹ at {Amount} ka payment complete nahi ho paya. Do minute baat kar sakte hain?",
+          "message_id": "3059273e-3b6c-4809-bc72-dadd6bd3c02d",
+          "timestamp": "2026-09-04T06:44:55.945+00:00",
+          "audio_offset_ms": 825
+        },
+        {
+          "user": "हां हां बताइए.",
+          "message_id": "231666",
+          "timestamp": "2026-09-04T06:44:58.143+00:00",
+          "audio_offset_ms": 12215
+        },
+        {
+          "bot": "क्या मैं जान सकती हूँ, payment complete करने में क्या दिक्कत आई?",
+          "message_id": "f320148e-df38-446b-9eab-4364e21624b2",
+          "timestamp": "2026-09-04T06:45:03.338+00:00",
+          "audio_offset_ms": 14698,
+          "llm_latency_ms": 429.63,
+          "llm_calls_ms": [
+            429.63
+          ]
+        },
+        {
+          "user": "हां",
+          "message_id": "232913",
+          "timestamp": "2026-09-04T06:45:04.910+00:00",
+          "audio_offset_ms": 19475
+        },
+        {
+          "user": "मेरा",
+          "message_id": "233211",
+          "timestamp": "2026-09-04T06:45:06.243+00:00",
+          "audio_offset_ms": 20477
+        },
+        {
+          "user": "account में insufficient balance था.",
+          "message_id": "233732",
+          "timestamp": "2026-09-04T06:45:08.430+00:00",
+          "audio_offset_ms": 20477
+        },
+        {
+          "bot": "समझ गई। क्या आप अभी payment कर पाएंगे, या किसी बाद की तारीख़ में?",
+          "message_id": "20048adf-3d64-41da-baed-a063275aa521",
+          "timestamp": "2026-09-04T06:45:11.535+00:00",
+          "audio_offset_ms": 25015,
+          "llm_latency_ms": 808.18,
+          "llm_calls_ms": [
+            363.89,
+            444.29
+          ]
+        },
+        {
+          "user": "पांच घंटे बाद कर लूंगा.",
+          "message_id": "235972",
+          "timestamp": "2026-09-04T06:45:17.917+00:00",
+          "audio_offset_ms": 31435
+        },
+        {
+          "bot": "ठीक है, तो मैं आपको पाँच घंटे बाद payment का reminder भेज दूँ?",
+          "message_id": "7af59dff-21b0-472b-809f-5d542b3a3af9",
+          "timestamp": "2026-09-04T06:45:23.632+00:00",
+          "audio_offset_ms": 34792,
+          "llm_latency_ms": 626.0,
+          "llm_calls_ms": [
+            626.0
+          ]
+        },
+        {
+          "user": "हां हां, भेजता हूं.",
+          "message_id": "238217",
+          "timestamp": "2026-09-04T06:45:25.698+00:00",
+          "audio_offset_ms": 39835
+        },
+        {
+          "user": "नहीं हां ठीक है.",
+          "message_id": "238588",
+          "timestamp": "2026-09-04T06:45:27.668+00:00",
+          "audio_offset_ms": 42196
+        },
+        {
+          "bot": "ठीक है, पाँच घंटे बाद reminder भेज दिया जाएगा। आपसे बात करके अच्छा लगा, have a great day!",
+          "message_id": "7df4d197-b6de-4270-b292-0c7ffa77b733",
+          "timestamp": "2026-09-04T06:45:32.783+00:00",
+          "audio_offset_ms": 44423,
+          "llm_latency_ms": 1190.54,
+          "llm_calls_ms": [
+            742.98,
+            447.56
+          ]
+        },
+        {
+          "user": "You too, bye.",
+          "message_id": "240900",
+          "timestamp": "2026-09-04T06:45:37.384+00:00",
+          "audio_offset_ms": 51676
+        },
+        {
+          "bot": "धन्यवाद, आपका दिन शुभ हो। Bye!",
+          "message_id": "4e25c33e-2f7f-4801-b973-c2f74a42a2f0",
+          "timestamp": "2026-09-04T06:45:40.409+00:00",
+          "audio_offset_ms": 54728,
+          "llm_latency_ms": 423.2,
+          "llm_calls_ms": [
+            423.2
+          ]
+        }
+      ],
+      "recording_url": "https://storage.googleapis.com/ringg-call-recordings/4766e3dc-01c7-4b3d-b4ce-a49727ed9b12/01a06b28-b40e-7db2-a444-5499e25afe9c.mp3?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=nca-prod-wi%40desivocalprod01.iam.gserviceaccount.com%2F20260904%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260904T064617Z&X-Goog-Expires=86399&X-Goog-SignedHeaders=host&X-Goog-Signature=a440f06b2060ad72f2ac9ac605e91091d4a34cf744a3d085edefce6ffca4d04f8daa46af5d20a353c067b489a6d0571e5e005d0cf8ca76b94b726dd2480dd1a42f187886d145dcf55cbdaace2e8170bfc8d32efd9255a8db8252a1e0c3ffe9d998d071c1e3a548e9652b31ac950eb2291f0b44f12d5618e037f666d7232f6893b1b4bec9705dc65a1a263308ca41ce5880da2b940965ea5723fc763fc32e498d2fc797cd07a675c4e717215c3d6974da64ad15095bdbe2b4bc225d2b6a6504fb906943acf8d38bd1e6fb28e54a567839d5b93f9bce21c6f78ea3f8f6417f10c8d7e0101f610bc999b971c3d2a326a3a4ba0a8bb0b5b973fff1dcf6f7326a122f",
+      "platform_analysis": {
+        "summary": "The call addressed a failed payment caused by insufficient balance. The user committed to retry the payment in five hours and agreed to receive a reminder at that time. The agent confirmed that a five-hour reminder would be sent, and the conversation ended on a courteous note.",
+        "timezone": "Asia/Kolkata",
+        "sentiment": "positive",
+        "key_points": [
+          "Payment could not be completed due to insufficient balance.",
+          "User plans to complete the payment after five hours.",
+          "User agreed to receive a reminder about the payment after five hours.",
+          "Conversation ended politely with mutual goodwill."
+        ],
+        "tokens_used": 3460,
+        "action_items": [
+          "Send a reminder about the payment after five hours."
+        ],
+        "input_tokens": 1837,
+        "cached_tokens": 0,
+        "output_tokens": 1623,
+        "classification": "information_provided",
+        "sentiment_reason": "The user was cooperative and agreeable to paying later and to receiving a reminder.",
+        "callback_requested": false,
+        "call_disconnect_reason": "agent_hangup",
+        "callback_requested_time": null,
+        "callback_requested_via_human_agent": false
+      },
+      "platform_analysis_status": "success",
+      "client_analysis": null,
+      "client_analysis_status": "not_enabled",
+      "tool_call_logs": []
+    },
+    "01a06c16-6cbb-72f2-81eb-7a2085a3dfe3": {
+      "call_id": "01a06c16-6cbb-72f2-81eb-7a2085a3dfe3",
+      "event_type": "all_processing_completed",
+      "received_at": "2026-09-04T11:06:22.504478+00:00",
+      "caller_id": "+916309765716",
+      "to_number": "+916309765716",
+      "from_number": "+18154354644",
+      "call_sid": "CAb1682062222fb45e558023759f9926cf",
+      "call_type": "outbound",
+      "status": "completed",
+      "sub_status": "ACCEPTED",
+      "call_duration": 37.66,
+      "called_on": "2026-09-04T11:04:26.116409+00:00",
+      "created_at": "2026-09-04T11:03:24.093079+00:00",
+      "agent_id": "d011c8f4-2f61-4d5f-8872-a839d5f822c7",
+      "agent_name": "Tiffany from RINGG AI",
+      "version_id": "cccc26a1-ff02-4add-984e-3b5d376c1878",
+      "version_slug": "v1",
+      "call_cost": 6.0,
+      "overall_latency_seconds": 1.093069,
+      "first_utterance_seconds": 1.12104,
+      "custom_args_values": {
+        "account_id": "ACC-42",
+        "callee_name": "vikas",
+        "mobile_number": "+916309765716"
+      },
+      "agent_message_count": 3,
+      "user_message_count": 2,
+      "transcript": [
+        {
+          "bot": "Namaste vikas ji, main Aditi bol rahi hoon, apki AI assistant Razorpay se. Aapka eight-thousand rupeeska payment complete nahi ho paya. Do minute baat kar sakte hain?",
+          "message_id": "68f6803a-a21c-4f9c-915f-8450c22bd4ee",
+          "timestamp": "2026-09-04T11:04:57.733+00:00",
+          "audio_offset_ms": 1035
+        },
+        {
+          "user": "बताइए हां.",
+          "message_id": "366326",
+          "timestamp": "2026-09-04T11:04:59.786+00:00",
+          "audio_offset_ms": 12739
+        },
+        {
+          "bot": "समझ गई। क्या मैं जान सकती हूँ, पेमेंट पूरा करने में क्या दिक्कत आई?",
+          "message_id": "7d6339c5-14fd-4220-9685-7b61fc65f5d2",
+          "timestamp": "2026-09-04T11:05:02.649+00:00",
+          "audio_offset_ms": 14951,
+          "llm_latency_ms": 512.04,
+          "llm_calls_ms": [
+            512.04
+          ]
+        },
+        {
+          "user": "मुझे अभी interest नहीं है वह product ख़रीदने में.",
+          "message_id": "367563",
+          "timestamp": "2026-09-04T11:05:10.572+00:00",
+          "audio_offset_ms": 21179
+        },
+        {
+          "bot": "समझ गई, कोई बात नहीं। आपकी तरफ़ से कोई और कार्रवाई नहीं होगी। समय देने के लिए धन्यवाद, आपका दिन शुभ हो।",
+          "message_id": "5466e635-750e-4564-bb2f-8494de82f517",
+          "timestamp": "2026-09-04T11:05:14.378+00:00",
+          "audio_offset_ms": 25879,
+          "llm_latency_ms": 402.76,
+          "llm_calls_ms": [
+            402.76
+          ]
+        }
+      ],
+      "recording_url": "https://storage.googleapis.com/ringg-call-recordings/4766e3dc-01c7-4b3d-b4ce-a49727ed9b12/01a06c16-6cbb-72f2-81eb-7a2085a3dfe3.mp3?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=nca-prod-wi%40desivocalprod01.iam.gserviceaccount.com%2F20260904%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260904T110621Z&X-Goog-Expires=86399&X-Goog-SignedHeaders=host&X-Goog-Signature=8cbe3bb5f03c24d2dd7e9d01ea1eacaf4937fc7caa85917dc134a195f252b39760f47d7048a67319cab373005b8419d4da32c69bb08a706f2af93c9162cd10a06ba69a98a13764fd1ee08099febda748a8f8525f01922e3b05458b28395130d149b9824028d83edc5e631defbb631afe8fde6e3edb0ab4a43f2522113cfde44052d3ca633e8fedf2e6106af97b11d221107a0cf424460ab2d6711c7e35801d89707458a52513538994496425d7ed9ebc85d72ca35596cfa43f906b266f45a84cbb046e7ebe977e5e7e2cbd829751926940287ef23db359b0327f9b165738c2f92ecc1a1e96634afa944ea0380f7b2a19681a783fe5ae5d49a29f18e49a9e4dcb",
+      "platform_analysis": {
+        "summary": "The agent notified the user about a failed Rs 8000 payment, sought the reason, but the user expressed no interest in the product at the moment and the agent closed the conversation politely with no further actions.",
+        "timezone": "Asia/Kolkata",
+        "sentiment": "neutral",
+        "key_points": [
+          "A payment of Rs 8000 could not be completed.",
+          "The agent asked what issue occurred during payment.",
+          "The user stated they are not interested in buying the product right now.",
+          "The agent acknowledged and ended the conversation with thanks."
+        ],
+        "tokens_used": 3366,
+        "action_items": [
+          "No action items for either party at this time."
+        ],
+        "input_tokens": 1745,
+        "cached_tokens": 0,
+        "output_tokens": 1621,
+        "classification": "not_interested",
+        "sentiment_reason": "User remained polite while declining the product and there was no expression of positive interest or frustration.",
+        "callback_requested": false,
+        "call_disconnect_reason": "user_hangup",
+        "callback_requested_time": null,
+        "callback_requested_via_human_agent": false
+      },
+      "platform_analysis_status": "success",
+      "client_analysis": null,
+      "client_analysis_status": "not_enabled",
+      "tool_call_logs": []
+    },
+    "01a06c7a-019b-7d40-a937-73517d538c49": {
+      "call_id": "01a06c7a-019b-7d40-a937-73517d538c49",
+      "event_type": "all_processing_completed",
+      "received_at": "2026-09-04T12:54:48.447222+00:00",
+      "caller_id": "+916309765716",
+      "to_number": "+916309765716",
+      "from_number": "+18154354644",
+      "call_sid": "CAd28e6d934b18ce321a46a77caecd3412",
+      "call_type": "outbound",
+      "status": "completed",
+      "sub_status": "ACCEPTED",
+      "call_duration": 120.42,
+      "called_on": "2026-09-04T12:52:14.782538+00:00",
+      "created_at": "2026-09-04T12:52:10.268658+00:00",
+      "agent_id": "d011c8f4-2f61-4d5f-8872-a839d5f822c7",
+      "agent_name": "Tiffany from RINGG AI",
+      "version_id": "cccc26a1-ff02-4add-984e-3b5d376c1878",
+      "version_slug": "v1",
+      "call_cost": 18.0,
+      "overall_latency_seconds": 1.046952,
+      "first_utterance_seconds": 1.101718,
+      "custom_args_values": {
+        "account_id": "ACC-42",
+        "callee_name": "vikas",
+        "mobile_number": "+916309765716"
+      },
+      "agent_message_count": 8,
+      "user_message_count": 19,
+      "transcript": [
+        {
+          "bot": "Namaste vikas ji, main Aditi bol rahi hoon, apki AI assistant Razorpay se. Aapka eight-thousand rupeeska payment complete nahi ho paya. Do minute baat kar sakte hain?",
+          "message_id": "f1dca3e3-3ad3-4e9e-8b8a-31efb693879e",
+          "timestamp": "2026-09-04T12:52:34.599+00:00",
+          "audio_offset_ms": 954
+        },
+        {
+          "user": "हां हां, आप payment छोड़िए. आप बताइए आप कैसे हैं?",
+          "message_id": "818651",
+          "timestamp": "2026-09-04T12:52:39.582+00:00",
+          "audio_offset_ms": 13017
+        },
+        {
+          "bot": "मैं ठीक हूँ, धन्यवाद! Payment complete करने में आपको क्या दिक्कत आई थी?",
+          "message_id": "3c61c1ef-9b5e-4321-82cb-f4808c0d7d17",
+          "timestamp": "2026-09-04T12:52:43.661+00:00",
+          "audio_offset_ms": 17896,
+          "llm_latency_ms": 512.59,
+          "llm_calls_ms": [
+            512.59
+          ]
+        },
+        {
+          "user": "बताइए आप",
+          "message_id": "819831",
+          "timestamp": "2026-09-04T12:52:49.827+00:00",
+          "audio_offset_ms": 24158
+        },
+        {
+          "user": "नहीं payment छोड़िए आप यह बताइए आप आप सही है आप आप",
+          "message_id": "820334",
+          "timestamp": "2026-09-04T12:52:53.103+00:00",
+          "audio_offset_ms": 24158
+        },
+        {
+          "user": "हमारे साथ?",
+          "message_id": "820613",
+          "timestamp": "2026-09-04T12:52:55.105+00:00",
+          "audio_offset_ms": 30496
+        },
+        {
+          "bot": "मैं ठीक हूँ, धन्यवाद। Payment के बारे में बताइए-इसे पूरा करने में क्या दिक्कत आई?",
+          "message_id": "95d0ded4-06d6-43ea-9a89-dd0412762c14",
+          "timestamp": "2026-09-04T12:52:58.413+00:00",
+          "audio_offset_ms": 33007,
+          "llm_latency_ms": 897.02,
+          "llm_calls_ms": [
+            422.84,
+            474.18
+          ]
+        },
+        {
+          "user": "नहीं नहीं, आप यह बताइए कि",
+          "message_id": "821818",
+          "timestamp": "2026-09-04T12:53:05.531+00:00",
+          "audio_offset_ms": 39737
+        },
+        {
+          "user": "दिल्ली कहां है?",
+          "message_id": "822042",
+          "timestamp": "2026-09-04T12:53:06.983+00:00",
+          "audio_offset_ms": 39737
+        },
+        {
+          "user": "कौन से country में दिल्ली है?",
+          "message_id": "822352",
+          "timestamp": "2026-09-04T12:53:09.031+00:00",
+          "audio_offset_ms": 39737
+        },
+        {
+          "bot": "दिल्ली भारत में है। Payment पूरा करने में क्या दिक्कत आई थी?",
+          "message_id": "6a8e7c92-fe4e-4a74-83db-3d93b886354c",
+          "timestamp": "2026-09-04T12:53:12.761+00:00",
+          "audio_offset_ms": 46995,
+          "llm_latency_ms": 445.91,
+          "llm_calls_ms": [
+            445.91
+          ]
+        },
+        {
+          "user": "दिल्ली भारत में है या",
+          "message_id": "823573",
+          "timestamp": "2026-09-04T12:53:18.560+00:00",
+          "audio_offset_ms": 53157
+        },
+        {
+          "user": "फिर Pakistan में लाहौर है क्या?",
+          "message_id": "824607",
+          "timestamp": "2026-09-04T12:53:21.102+00:00",
+          "audio_offset_ms": 53157
+        },
+        {
+          "bot": "दिल्ली भारत में है, और लाहौर पाकिस्तान में। Payment complete करने में क्या दिक्कत आई थी?",
+          "message_id": "dd55cffe-b79c-4e19-9a82-3cfa5d8c1e21",
+          "timestamp": "2026-09-04T12:53:26.550+00:00",
+          "audio_offset_ms": 59585,
+          "llm_latency_ms": 460.2,
+          "llm_calls_ms": [
+            460.2
+          ]
+        },
+        {
+          "user": "अच्छा और मुझे बताएंगे कि",
+          "message_id": "826626",
+          "timestamp": "2026-09-04T12:53:33.253+00:00",
+          "audio_offset_ms": 67557
+        },
+        {
+          "user": "गुजरात का capital क्या है?",
+          "message_id": "827315",
+          "timestamp": "2026-09-04T12:53:38.442+00:00",
+          "audio_offset_ms": 71296
+        },
+        {
+          "bot": "गुजरात की राजधानी गांधीनगर है। Payment complete करने में क्या दिक्कत आई थी?",
+          "message_id": "5a259790-5e3b-4412-a03f-24b538a37197",
+          "timestamp": "2026-09-04T12:53:42.577+00:00",
+          "audio_offset_ms": 76492,
+          "llm_latency_ms": 943.96,
+          "llm_calls_ms": [
+            481.0,
+            462.96
+          ]
+        },
+        {
+          "user": "अच्छा अच्छा, ठीक है ठीक है.",
+          "message_id": "828464",
+          "timestamp": "2026-09-04T12:53:48.877+00:00",
+          "audio_offset_ms": 83337
+        },
+        {
+          "user": "Payment complete करने में देखिए",
+          "message_id": "829174",
+          "timestamp": "2026-09-04T12:53:53.969+00:00",
+          "audio_offset_ms": 87557
+        },
+        {
+          "user": "पैसे नहीं थे मेरे पास.",
+          "message_id": "829442",
+          "timestamp": "2026-09-04T12:53:55.719+00:00",
+          "audio_offset_ms": 87557
+        },
+        {
+          "bot": "समझ गई, अभी आपके पास पैसे नहीं थे। आप payment कब तक कर पाएंगे?",
+          "message_id": "cc3c2cce-61c2-4399-94f0-a5d4ec74b57b",
+          "timestamp": "2026-09-04T12:54:00.284+00:00",
+          "audio_offset_ms": 93678,
+          "llm_latency_ms": 906.66,
+          "llm_calls_ms": [
+            402.32,
+            504.34
+          ]
+        },
+        {
+          "user": "हां, कल कल रात तक कर दूंगा.",
+          "message_id": "830616",
+          "timestamp": "2026-09-04T12:54:06.479+00:00",
+          "audio_offset_ms": 100538
+        },
+        {
+          "bot": "ठीक है, तो मैं आपको कल रात payment के लिए reminder भेज दूँ?",
+          "message_id": "ed87a012-9b6a-4335-88cf-305935902ee0",
+          "timestamp": "2026-09-04T12:54:12.500+00:00",
+          "audio_offset_ms": 104855,
+          "llm_latency_ms": 466.25,
+          "llm_calls_ms": [
+            466.25
+          ]
+        },
+        {
+          "user": "हां",
+          "message_id": "831285",
+          "timestamp": "2026-09-04T12:54:12.738+00:00",
+          "audio_offset_ms": 109277
+        },
+        {
+          "user": "हां पर payment करने का reason था कि",
+          "message_id": "832031",
+          "timestamp": "2026-09-04T12:54:17.722+00:00",
+          "audio_offset_ms": 109637
+        },
+        {
+          "user": "मेरा cancel",
+          "message_id": "832309",
+          "timestamp": "2026-09-04T12:54:19.539+00:00",
+          "audio_offset_ms": 109637
+        },
+        {
+          "user": "मेरे पास पैसे तो थे.",
+          "message_id": "832672",
+          "timestamp": "2026-09-04T12:54:22.382+00:00",
+          "audio_offset_ms": 117537
+        }
+      ],
+      "recording_url": "https://storage.googleapis.com/ringg-call-recordings/4766e3dc-01c7-4b3d-b4ce-a49727ed9b12/01a06c7a-019b-7d40-a937-73517d538c49.mp3?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=nca-prod-wi%40desivocalprod01.iam.gserviceaccount.com%2F20260904%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260904T125447Z&X-Goog-Expires=86399&X-Goog-SignedHeaders=host&X-Goog-Signature=7b85d909166fa1065e3fa0b426917966d06e0c1a7a3d45ce5eb7eb5612f549ca6afdf99ab179d043d5b2165c53e48810c405294b50bcc480858a2a3cadd829f0892c333423324cced9f6f5344d20cda58e7f45b726ecbc1b22651301150359fd8a0799d113c65cc69387e390fbfda810647d989359ece0bf8df2a7aa41a0c00734bef6939e0fd455b8cdc2260d03dbfad8de15fd6b28a7438ded21cb97c2cebe504f76ca55974cd614ed128d529167bcec5c41a665a0516a5caa7ba94adafca32cd654cd42c61aba72438bb814c0b2b0dd4779a23eb06d542a0f5cb8668c23da555b8b40c0873ac7f3f7fdf60d866428292ac039b9c89465028f217233029121",
+      "platform_analysis": {
+        "summary": "A Razorpay AI assistant discussed a failed ₹8000 payment with the customer. While the customer engaged on various topics, the main focus was the payment delay. The customer committed to paying by tomorrow night and consented to receive a reminder from the system. No further commitments beyond the reminder were made.",
+        "timezone": "Asia/Kolkata",
+        "sentiment": "neutral",
+        "key_points": [
+          "The customer (vikas) had an unsuccessful payment of ₹8000.",
+          "The agent asked what issue prevented the payment; the conversation included unrelated questions about geography.",
+          "The customer stated they would pay by tomorrow night and agreed to receive a reminder for the payment.",
+          "The agent offered to send a reminder for the payment and the customer consented."
+        ],
+        "tokens_used": 4547,
+        "action_items": [
+          "Schedule a reminder for the customer to complete the ₹8000 payment tomorrow night."
+        ],
+        "input_tokens": 2008,
+        "cached_tokens": 0,
+        "output_tokens": 2539,
+        "classification": "information_provided",
+        "sentiment_reason": "The customer remained cooperative and provided responses with no strong negative or positive emotion; there was a practical decision to pay by tomorrow night and accept a reminder.",
+        "callback_requested": false,
+        "call_disconnect_reason": "user_hangup",
+        "callback_requested_time": null,
+        "callback_requested_via_human_agent": false
+      },
+      "platform_analysis_status": "success",
+      "client_analysis": null,
+      "client_analysis_status": "not_enabled",
+      "tool_call_logs": []
+    }
+  }
+}

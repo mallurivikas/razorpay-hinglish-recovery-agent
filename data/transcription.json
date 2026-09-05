@@ -1,0 +1,424 @@
+{
+  "01a06b28-b40e-7db2-a444-5499e25afe9c": {
+    "call_id": "01a06b28-b40e-7db2-a444-5499e25afe9c",
+    "gemini_analysis": {
+      "transcript": [
+        {
+          "speaker": "ai",
+          "original": "Namaste at {Callee Name} ji, main Aditi bol rahi hoon, ek automated AI assistant, at {Merchant Name} ki taraf se. Aapka ₹ at {Amount} ka payment complete nahi ho paya. Do minute baat kar sakte hain?",
+          "transliteration": "Namaste at {Callee Name} ji, main Aditi bol rahi hoon, ek automated AI assistant, at {Merchant Name} ki taraf se. Aapka ₹ at {Amount} ka payment complete nahi ho paya. Do minute baat kar sakte hain?",
+          "english_translation": "Hello {Callee Name} ji, I am Aditi speaking, an automated AI assistant on behalf of {Merchant Name}. Your payment of ₹ {Amount} could not be completed. Can we talk for two minutes?"
+        },
+        {
+          "speaker": "customer",
+          "original": "हां हां बताइए.",
+          "transliteration": "haan haan bataiye.",
+          "english_translation": "Yes yes, please tell me."
+        },
+        {
+          "speaker": "ai",
+          "original": "क्या मैं जान सकती हूँ, payment complete करने में क्या दिक्कत आई?",
+          "transliteration": "kya main jaan sakti hoon, payment complete karne mein kya dikkat aayi?",
+          "english_translation": "May I know what problem occurred in completing the payment?"
+        },
+        {
+          "speaker": "customer",
+          "original": "हां",
+          "transliteration": "haan",
+          "english_translation": "Yes"
+        },
+        {
+          "speaker": "customer",
+          "original": "मेरा",
+          "transliteration": "mera",
+          "english_translation": "My"
+        },
+        {
+          "speaker": "customer",
+          "original": "account में insufficient balance था.",
+          "transliteration": "account mein insufficient balance tha.",
+          "english_translation": "There was insufficient balance in my account."
+        },
+        {
+          "speaker": "ai",
+          "original": "समझ गई। क्या आप अभी payment कर पाएंगे, या किसी बाद की तारीख़ में?",
+          "transliteration": "samajh gayi. kya aap abhi payment kar paayenge, ya kisi baad ki taareekh mein?",
+          "english_translation": "Understood. Will you be able to make the payment now, or on a later date?"
+        },
+        {
+          "speaker": "customer",
+          "original": "पांच घंटे बाद कर लूंगा.",
+          "transliteration": "paanch ghante baad kar loonga.",
+          "english_translation": "I will do it after five hours."
+        },
+        {
+          "speaker": "ai",
+          "original": "ठीक है, तो मैं आपको पाँच घंटे बाद payment का reminder भेज दूँ?",
+          "transliteration": "theek hai, to main aapko paanch ghante baad payment ka reminder bhej doon?",
+          "english_translation": "Okay, so should I send you a payment reminder after five hours?"
+        },
+        {
+          "speaker": "customer",
+          "original": "हां हां, भेजता हूं.",
+          "transliteration": "haan haan, bhejta hoon.",
+          "english_translation": "Yes yes, I will send."
+        },
+        {
+          "speaker": "customer",
+          "original": "नहीं हां ठीक है.",
+          "transliteration": "nahin haan theek hai.",
+          "english_translation": "No yes okay."
+        },
+        {
+          "speaker": "ai",
+          "original": "ठीक है, पाँच घंटे बाद reminder भेज दिया जाएगा। आपसे बात करके अच्छा लगा, have a great day!",
+          "transliteration": "theek hai, paanch ghante baad reminder bhej diya jaayega. aapse baat karke achha laga, have a great day!",
+          "english_translation": "Okay, a reminder will be sent after five hours. It was nice talking to you, have a great day!"
+        },
+        {
+          "speaker": "customer",
+          "original": "You too, bye.",
+          "transliteration": "You too, bye.",
+          "english_translation": "You too, bye."
+        },
+        {
+          "speaker": "ai",
+          "original": "धन्यवाद, आपका दिन शुभ हो। Bye!",
+          "transliteration": "dhanyavaad, aapka din shubh ho. Bye!",
+          "english_translation": "Thank you, have a good day. Bye!"
+        }
+      ],
+      "language": {
+        "primary": "Hinglish",
+        "secondary": [
+          "Hindi",
+          "English"
+        ],
+        "style": "Polite and conversational"
+      },
+      "payment": {
+        "issue": "Payment failed due to insufficient funds",
+        "customer_stated_reason": "Insufficient balance in account"
+      },
+      "customer_intent": {
+        "willing_to_retry": true,
+        "retry_time": "In 5 hours",
+        "commitment_level": "High",
+        "commitment_evidence": "Customer stated 'पांच घंटे बाद कर लूंगा' (I will do it after five hours) and agreed to receive a payment reminder."
+      },
+      "recovery": {
+        "outcome": "PTP (Promise to Pay)",
+        "recommended_action": "Send a payment reminder link after 5 hours",
+        "follow_up_required": true,
+        "follow_up_time": "2026-09-04T11:45:00.000Z"
+      },
+      "objections": [],
+      "customer_concerns": [],
+      "agent_effectiveness": {
+        "score": 6,
+        "strengths": [
+          "Polite and professional tone",
+          "Quickly understood customer's stated reason",
+          "Successfully agreed on a concrete retry timeframe"
+        ],
+        "issues": [
+          "Unfilled template placeholders in the opening prompt ('{Callee Name}', '{Merchant Name}', '{Amount}')"
+        ]
+      },
+      "agent_promises": [
+        {
+          "promise": "Send a payment reminder after five hours",
+          "time": "In 5 hours",
+          "execution_verified": false
+        }
+      ]
+    }
+  },
+  "01a06c16-6cbb-72f2-81eb-7a2085a3dfe3": {
+    "call_id": "01a06c16-6cbb-72f2-81eb-7a2085a3dfe3",
+    "gemini_analysis": {
+      "transcript": [
+        {
+          "speaker": "ai",
+          "original": "Namaste vikas ji, main Aditi bol rahi hoon, apki AI assistant Razorpay se. Aapka eight-thousand rupeeska payment complete nahi ho paya. Do minute baat kar sakte hain?",
+          "transliteration": "Namaste vikas ji, main Aditi bol rahi hoon, apki AI assistant Razorpay se. Aapka eight-thousand rupeeska payment complete nahi ho paya. Do minute baat kar sakte hain?",
+          "english_translation": "Hello Vikas ji, I am Aditi speaking, your AI assistant from Razorpay. Your payment of eight thousand rupees could not be completed. Can we talk for two minutes?"
+        },
+        {
+          "speaker": "customer",
+          "original": "बताइए हां.",
+          "transliteration": "Bataiye haan.",
+          "english_translation": "Tell me, yes."
+        },
+        {
+          "speaker": "ai",
+          "original": "समझ गई। क्या मैं जान सकती हूँ, पेमेंट पूरा करने में क्या दिक्कत आई?",
+          "transliteration": "Samajh gayi. Kya main jaan sakti hoon, payment poora karne mein kya dikkat aayi?",
+          "english_translation": "Understood. May I know what difficulty you faced in completing the payment?"
+        },
+        {
+          "speaker": "customer",
+          "original": "मुझे अभी interest नहीं है वह product ख़रीदने में.",
+          "transliteration": "Mujhe abhi interest nahi hai vah product khareedne mein.",
+          "english_translation": "I am not interested in buying that product right now."
+        },
+        {
+          "speaker": "ai",
+          "original": "समझ गई, कोई बात नहीं। आपकी तरफ़ से कोई और कार्रवाई नहीं होगी। समय देने के लिए धन्यवाद, आपका दिन शुभ हो।",
+          "transliteration": "Samajh gayi, koi baat nahi. Aapki taraf se koi aur karwai nahi hogi. Samay dene ke liye dhanyavaad, aapka din shubh ho.",
+          "english_translation": "Understood, no problem. No further action will be required from your end. Thank you for your time, have a good day."
+        }
+      ],
+      "language": {
+        "primary": "Hindi",
+        "secondary": [
+          "English"
+        ],
+        "style": "Polite"
+      },
+      "payment": {
+        "issue": "Payment incomplete / abandoned",
+        "customer_stated_reason": "Customer is no longer interested in purchasing the product"
+      },
+      "customer_intent": {
+        "willing_to_retry": false,
+        "retry_time": null,
+        "commitment_level": "None",
+        "commitment_evidence": "Customer explicitly stated: \"Mujhe abhi interest nahi hai vah product khareedne mein.\" (I am not interested in buying that product right now.)"
+      },
+      "recovery": {
+        "outcome": "Failed",
+        "recommended_action": "Mark lead as lost and close the case.",
+        "follow_up_required": false,
+        "follow_up_time": null
+      },
+      "objections": [
+        "No longer interested in buying the product"
+      ],
+      "customer_concerns": [],
+      "agent_effectiveness": {
+        "score": 8,
+        "strengths": [
+          "Polite and professional demeanor",
+          "Respected the customer's decision without being overly pushy or aggressive",
+          "Closed the call smoothly and efficiently"
+        ],
+        "issues": [
+          "Did not probe further or attempt to understand the reason behind the loss of interest"
+        ]
+      },
+      "agent_promises": []
+    }
+  },
+  "01a06c7a-019b-7d40-a937-73517d538c49": {
+    "call_id": "01a06c7a-019b-7d40-a937-73517d538c49",
+    "gemini_analysis": {
+      "transcript": [
+        {
+          "speaker": "ai",
+          "original": "Namaste vikas ji, main Aditi bol rahi hoon, apki AI assistant Razorpay se. Aapka eight-thousand rupeeska payment complete nahi ho paya. Do minute baat kar sakte hain?",
+          "transliteration": "Namaste vikas ji, main Aditi bol rahi hoon, apki AI assistant Razorpay se. Aapka eight-thousand rupeeska payment complete nahi ho paya. Do minute baat kar sakte hain?",
+          "english_translation": "Hello Vikas ji, I am Aditi, your AI assistant from Razorpay. Your payment of eight thousand rupees could not be completed. Can we talk for two minutes?"
+        },
+        {
+          "speaker": "customer",
+          "original": "हां हां, आप payment छोड़िए. आप बताइए आप कैसे हैं?",
+          "transliteration": "Haan haan, aap payment chhodiye. Aap bataiye aap kaise hain?",
+          "english_translation": "Yes yes, leave the payment aside. You tell me, how are you?"
+        },
+        {
+          "speaker": "ai",
+          "original": "मैं ठीक हूँ, धन्यवाद! Payment complete करने में आपको क्या दिक्कत आई थी?",
+          "transliteration": "Main theek hoon, dhanyavaad! Payment complete karne mein aapko kya dikkat aai thi?",
+          "english_translation": "I am fine, thank you! What issue did you face in completing the payment?"
+        },
+        {
+          "speaker": "customer",
+          "original": "बताइए आप",
+          "transliteration": "Bataiye aap",
+          "english_translation": "You tell me"
+        },
+        {
+          "speaker": "customer",
+          "original": "नहीं payment छोड़िए आप यह बताइए आप आप सही है आप आप",
+          "transliteration": "Nahi payment chhodiye aap yeh bataiye aap aap sahi hai aap aap",
+          "english_translation": "No, leave the payment, you tell me if you are fine, you you"
+        },
+        {
+          "speaker": "customer",
+          "original": "हमारे साथ?",
+          "transliteration": "Hamare saath?",
+          "english_translation": "With us?"
+        },
+        {
+          "speaker": "ai",
+          "original": "मैं ठीक हूँ, धन्यवाद। Payment के बारे में बताइए-इसे पूरा करने में क्या दिक्कत आई?",
+          "transliteration": "Main theek hoon, dhanyavaad. Payment ke baare mein bataiye-ise poora karne mein kya dikkat aai?",
+          "english_translation": "I am fine, thank you. Tell me about the payment—what issue did you face in completing it?"
+        },
+        {
+          "speaker": "customer",
+          "original": "नहीं नहीं, आप यह बताइए कि",
+          "transliteration": "Nahi nahi, aap yeh bataiye ki",
+          "english_translation": "No no, you tell me that"
+        },
+        {
+          "speaker": "customer",
+          "original": "दिल्ली कहां है?",
+          "transliteration": "Delhi kahan hai?",
+          "english_translation": "Where is Delhi?"
+        },
+        {
+          "speaker": "customer",
+          "original": "कौन से country में दिल्ली है?",
+          "transliteration": "Kaun se country mein Delhi hai?",
+          "english_translation": "In which country is Delhi?"
+        },
+        {
+          "speaker": "ai",
+          "original": "दिल्ली भारत में है। Payment पूरा करने में क्या दिक्कत आई थी?",
+          "transliteration": "Delhi Bharat mein hai. Payment poora karne mein kya dikkat aai thi?",
+          "english_translation": "Delhi is in India. What issue did you face in completing the payment?"
+        },
+        {
+          "speaker": "customer",
+          "original": "दिल्ली भारत में है या",
+          "transliteration": "Delhi Bharat mein hai ya",
+          "english_translation": "Is Delhi in India or"
+        },
+        {
+          "speaker": "customer",
+          "original": "फिर Pakistan में लाहौर है क्या?",
+          "transliteration": "Phir Pakistan mein Lahore hai kya?",
+          "english_translation": "Is Lahore in Pakistan then?"
+        },
+        {
+          "speaker": "ai",
+          "original": "दिल्ली भारत में है, और लाहौर पाकिस्तान में। Payment complete करने में क्या दिक्कत आई थी?",
+          "transliteration": "Delhi Bharat mein hai, aur Lahore Pakistan mein. Payment complete karne mein kya dikkat aai thi?",
+          "english_translation": "Delhi is in India, and Lahore is in Pakistan. What issue did you face in completing the payment?"
+        },
+        {
+          "speaker": "customer",
+          "original": "अच्छा और मुझे बताएंगे कि",
+          "transliteration": "Achha aur mujhe batayenge ki",
+          "english_translation": "Okay, and will you tell me"
+        },
+        {
+          "speaker": "customer",
+          "original": "गुजरात का capital क्या है?",
+          "transliteration": "Gujarat ka capital kya hai?",
+          "english_translation": "What is the capital of Gujarat?"
+        },
+        {
+          "speaker": "ai",
+          "original": "गुजरात की राजधानी गांधीनगर है। Payment complete करने में क्या दिक्कत आई थी?",
+          "transliteration": "Gujarat ki rajdhani Gandhinagar hai. Payment complete karne mein kya dikkat aai thi?",
+          "english_translation": "The capital of Gujarat is Gandhinagar. What issue did you face in completing the payment?"
+        },
+        {
+          "speaker": "customer",
+          "original": "अच्छा अच्छा, ठीक है ठीक है.",
+          "transliteration": "Achha achha, theek hai theek hai.",
+          "english_translation": "Okay okay, alright alright."
+        },
+        {
+          "speaker": "customer",
+          "original": "Payment complete करने में देखिए",
+          "transliteration": "Payment complete karne mein dekhiye",
+          "english_translation": "Look, regarding completing the payment"
+        },
+        {
+          "speaker": "customer",
+          "original": "पैसे नहीं थे मेरे पास.",
+          "transliteration": "Paise nahi the mere paas.",
+          "english_translation": "I didn't have money."
+        },
+        {
+          "speaker": "ai",
+          "original": "समझ गई, अभी आपके पास पैसे नहीं थे। आप payment कब तक कर पाएंगे?",
+          "transliteration": "Samajh gayi, abhi aapke paas paise nahi the. Aap payment kab tak kar paayenge?",
+          "english_translation": "Understood, you did not have money at the time. By when will you be able to make the payment?"
+        },
+        {
+          "speaker": "customer",
+          "original": "हां, कल कल रात तक कर दूंगा.",
+          "transliteration": "Haan, kal kal raat tak kar doonga.",
+          "english_translation": "Yes, I will do it by tomorrow night."
+        },
+        {
+          "speaker": "ai",
+          "original": "ठीक है, तो मैं आपको कल रात payment के लिए reminder भेज दूँ?",
+          "transliteration": "Theek hai, to main aapko kal raat payment ke liye reminder bhejj doon?",
+          "english_translation": "Okay, so should I send you a reminder for the payment tomorrow night?"
+        },
+        {
+          "speaker": "customer",
+          "original": "हां",
+          "transliteration": "Haan",
+          "english_translation": "Yes"
+        },
+        {
+          "speaker": "customer",
+          "original": "हां पर payment करने का reason था कि",
+          "transliteration": "Haan par payment karne ka reason tha ki",
+          "english_translation": "Yes, but the reason for making the payment was that"
+        },
+        {
+          "speaker": "customer",
+          "original": "मेरा cancel",
+          "transliteration": "Mera cancel",
+          "english_translation": "My cancel"
+        },
+        {
+          "speaker": "customer",
+          "original": "मेरे पास पैसे तो थे.",
+          "transliteration": "Mere paas paise to the.",
+          "english_translation": "I actually had money."
+        }
+      ],
+      "language": {
+        "primary": "Hindi",
+        "secondary": [
+          "English"
+        ],
+        "style": "Conversational Hinglish"
+      },
+      "payment": {
+        "issue": "Failed payment of 8,000 rupees.",
+        "customer_stated_reason": "Customer initially claimed he did not have money, but later stated he actually had money."
+      },
+      "customer_intent": {
+        "willing_to_retry": true,
+        "retry_time": "Tomorrow night",
+        "commitment_level": "Medium",
+        "commitment_evidence": "Customer agreed to complete the payment by tomorrow night ('हां, कल कल रात तक कर दूंगा') and approved a reminder."
+      },
+      "recovery": {
+        "outcome": "Promised payment",
+        "recommended_action": "Send payment reminder and link tomorrow night as requested.",
+        "follow_up_required": true,
+        "follow_up_time": "Tomorrow night"
+      },
+      "objections": [],
+      "customer_concerns": [],
+      "agent_effectiveness": {
+        "score": 7,
+        "strengths": [
+          "Patiently answered customer's off-topic trivia questions while consistently steering the conversation back to the payment issue.",
+          "Successfully secured a payment timeframe and agreement for a reminder."
+        ],
+        "issues": [
+          "Repeated the exact same closing phrase ('Payment complete करने में क्या दिक्कत आई थी?') multiple times verbatim."
+        ]
+      },
+      "agent_promises": [
+        {
+          "promise": "Send a payment reminder tomorrow night",
+          "time": "Tomorrow night",
+          "execution_verified": false
+        }
+      ]
+    }
+  }
+}
