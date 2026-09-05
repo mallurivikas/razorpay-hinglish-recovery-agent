@@ -5,6 +5,10 @@ This project implements an AI-powered payment recovery workflow for failed Razor
 # Architecture 
 ![alt text](image.png)
 
+# Links for Razorpay's Voice Agent Recordings & Current Project Agent Recordings & demo video
+https://drive.google.com/drive/folders/12i42wP7VD0Dc08ZTtLo50a4HdVnvtLLv
+
+
 ## Main Parts
 
 - `webhook.py` — Receives completed Ringg AI call events and stores the raw call data.
