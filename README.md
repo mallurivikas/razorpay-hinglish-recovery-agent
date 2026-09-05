@@ -9,7 +9,7 @@ This project implements an AI-powered payment recovery workflow for failed Razor
 https://drive.google.com/drive/folders/12i42wP7VD0Dc08ZTtLo50a4HdVnvtLLv
 
 # Sample Output
-[Click Here to Listen to the Call](./sample2.mp3)
+[Click Here to Listen to the Call](./Sample2.mp3)
 
 ## Main Parts
 
