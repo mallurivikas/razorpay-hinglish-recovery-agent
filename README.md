@@ -74,4 +74,4 @@ Razorpay failed payment
 - The application stores data locally using JSON files.
 - The Ringg completion webhook requires a publicly accessible FastAPI endpoint, typically exposed using Ngrok during development.
 - The old direct Twilio → FastAPI → Gemini Live audio-streaming flow is no longer part of the current architecture.
-- `decision_engine.py`, `failed_payment_generation.py`, `process_json.py`, and `test_razorpay.py` are primarily testing/support utilities and are not part of the core live recovery flow.
+- `decision_engine.py`, `failed_payment_generation.py`, and `test_razorpay.py` are primarily testing/support utilities and are not part of the core live recovery flow.
