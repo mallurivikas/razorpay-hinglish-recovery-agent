@@ -2,6 +2,9 @@
 
 This project implements an AI-powered payment recovery workflow for failed Razorpay payments. It uses Ringg AI for outbound recovery calls, FastAPI for webhook handling, Gemini for post-call analysis, and a dashboard for monitoring recovery activity.
 
+# Architecture 
+![alt text](image.png)
+
 ## Main Parts
 
 - `webhook.py` — Receives completed Ringg AI call events and stores the raw call data.
